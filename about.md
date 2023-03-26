@@ -15,7 +15,16 @@ We are proudly based in Eindhoven, the Netherlands.
 
 # Our services
 
-Currently, we are only devloping apps.
+<div class="row justify-content-center">
+  {% for feature in site.data.features %}
+  <div class="col-12 col-md-6 col-lg-4 mb-2">
+    <div class="feature">
+      <h2 class="feature-title">{{ feature.title }}</h2>
+      <div class="feature-content">{{ feature.description }}</div>
+    </div>
+  </div>
+  {% endfor %}
+</div>
 
 # Information you might need
 
