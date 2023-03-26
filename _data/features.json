@@ -1,16 +1,7 @@
 [
   {
-    "title": "Free Consultation",
-    "description": "New clients receive an obligation free consultation.",
-    "image": {
-      "url": "images/features/noun_branding_1885335.svg",
-      "width": 80,
-      "height": 80
-    }
-  },
-  {
-    "title": "Certified Accountants",
-    "description": "All members of our team are certified accountants.",
+    "title": "App development",
+    "description": "Our core business is developing apps that fill a void.",
     "image": {
       "url": "images/features/noun_The Process_1885341.svg",
       "width": 80,
@@ -18,10 +9,19 @@
     }
   },
   {
-    "title": "Tax Compliance",
-    "description": "We stay up to date on the latest changes to the tax code.",
+    "title": "Flexbility at its core",
+    "description": "Our team is able to develop new apps within days.",
     "image": {
       "url": "images/features/noun_3d modeling_1885342.svg",
+      "width": 80,
+      "height": 80
+    }
+  },
+  {
+    "title": "Users around the world",
+    "description": "With our services we reach users worldwide",
+    "image": {
+      "url": "images/features/noun_branding_1885335.svg",
       "width": 80,
       "height": 80
     }
