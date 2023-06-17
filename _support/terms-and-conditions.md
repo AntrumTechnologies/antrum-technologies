@@ -6,7 +6,7 @@ weight: 4
 
 Our terms and conditions outline the rules and regulations for the use of Antrum Technologies' their software.
 
-![Accounting Services](/images/austin-distel-nGc5RT2HmF0-unsplash.jpg)
+![Boring](/images/sepp-rutz-6b_pYYWaTvQ-unsplash.jpg)
 
 By using our software we assume you accept these terms and conditions. Do not continue to use our software if you do not agree to take all of the terms and conditions stated on this page.
 

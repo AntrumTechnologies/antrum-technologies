@@ -6,9 +6,9 @@ weight: 2
 
 Our privacy policy explains how we handle your personal information and why we care.
 
-![Accounting Services](/images/austin-distel-nGc5RT2HmF0-unsplash.jpg)
+![Privacy](/images/matthew-henry-fPxOowbR6ls-unsplash.jpg)
 
-Last updated: March 25, 2023
+Last updated: June 17, 2023
 
 This Privacy Policy describes Our policies and procedures on the collection, use and disclosure of Your information when You use the Service and tells You about Your privacy rights and how the law protects You.
 
@@ -31,7 +31,7 @@ For the purposes of this Privacy Policy:
     
 *   **Affiliate** means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
     
-*   **Application** refers to Antrum Technologies, the software program provided by the Company.
+*   **Application** refers to any app (i.e. Software as a Service) distributed by the Company.
     
 *   **Company** (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to Antrum Technologies, Lanceloetstraat 6, 5625 BW, Eindhoven, NL.
     
@@ -60,20 +60,18 @@ Types of Data Collected
 
 While using Our Service, We may ask You to provide Us with certain personally identifiable information that can be used to contact or identify You. Personally identifiable information may include, but is not limited to:
 
-*   Email address
-    
-*   First name and last name
-    
-*   Usage Data
-    
+* Name
+* Email address
+* FCM token to send notifications to your device
+* Any other information You provide Us with after registering
 
 ### Usage Data
 
 Usage Data is collected automatically when using the Service.
 
-Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), browser type, browser version, the pages of our Service that You visit, the time and date of Your visit, the time spent on those pages, unique device identifiers and other diagnostic data.
+Usage Data may include information such as Your Device's Internet Protocol address (e.g. IP address), URLs requested by the app, the time and date of Your requests, unique device identifiers and other diagnostic data.
 
-When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, Your mobile operating system, the type of mobile Internet browser You use, unique device identifiers and other diagnostic data.
+When You access the Service by or through a mobile device, We may collect certain information automatically, including, but not limited to, the type of mobile device You use, Your mobile device unique ID, the IP address of Your mobile device, unique device identifiers and other diagnostic data.
 
 We may also collect information that Your browser sends whenever You visit our Service or when You access the Service by or through a mobile device.
 
@@ -81,12 +79,10 @@ We may also collect information that Your browser sends whenever You visit our S
 
 While using Our Application, in order to provide features of Our Application, We may collect, with Your prior permission:
 
-*   Information regarding your location
+* Information regarding your location
+* Pictures and other information from your Device's camera and photo library
     
-*   Pictures and other information from your Device's camera and photo library
-    
-
-We use this information to provide features of Our Service, to improve and customize Our Service. The information may be uploaded to the Company's servers and/or a Service Provider's server or it may be simply stored on Your device.
+We use this information to provide features of Our Service. The information may be uploaded to the Company's servers and/or a Service Provider's server or it may be simply stored on Your device.
 
 You can enable or disable access to this information at any time, through Your Device settings.
 
@@ -101,7 +97,7 @@ The Company may use Personal Data for the following purposes:
     
 *   **For the performance of a contract:** the development, compliance and undertaking of the purchase contract for the products, items or services You have purchased or of any other contract with Us through the Service.
     
-*   **To contact You:** To contact You by email, telephone calls, SMS, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.
+*   **To contact You:** To contact You by email, phone, or other equivalent forms of electronic communication, such as a mobile application's push notifications regarding updates or informative communications related to the functionalities, products or contracted services, including the security updates, when necessary or reasonable for their implementation.
     
 *   **To provide You** with news, special offers and general information about other goods, services and events which we offer that are similar to those that you have already purchased or enquired about unless You have opted not to receive such information.
     
@@ -114,9 +110,8 @@ The Company may use Personal Data for the following purposes:
 
 We may share Your personal information in the following situations:
 
-*   **With Service Providers:** We may share Your personal information with Service Providers to monitor and analyze the use of our Service, to contact You.
+*   **With Service Providers:** We may share Your personal information with Service Providers to monitor and analyze the use of our Service.
 *   **For business transfers:** We may share or transfer Your personal information in connection with, or during negotiations of, any merger, sale of Company assets, financing, or acquisition of all or a portion of Our business to another company.
-*   **With Affiliates:** We may share Your information with Our affiliates, in which case we will require those affiliates to honor this Privacy Policy. Affiliates include Our parent company and any other subsidiaries, joint venture partners or other companies that We control or that are under common control with Us.
 *   **With business partners:** We may share Your information with Our business partners to offer You certain products, services or promotions.
 *   **With other users:** when You share personal information or otherwise interact in the public areas with other users, such information may be viewed by all users and may be publicly distributed outside.
 *   **With Your consent**: We may disclose Your personal information for any other purpose with Your consent.
@@ -144,7 +139,7 @@ You have the right to delete or request that We assist in deleting the Personal 
 
 Our Service may give You the ability to delete certain information about You from within the Service.
 
-You may update, amend, or delete Your information at any time by signing in to Your Account, if you have one, and visiting the account settings section that allows you to manage Your personal information. You may also contact Us to request access to, correct, or delete any personal information that You have provided to Us.
+You may update, amend, or delete Your information at any time by contacting Us to request access to, correct, or delete any personal information that You have provided to Us.
 
 Please note, however, that We may need to retain certain information when we have a legal obligation or lawful basis to do so.
 

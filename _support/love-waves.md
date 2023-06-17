@@ -6,6 +6,4 @@ weight: 1
 
 We are here to make dating better, one wave at a time. Love waves is an app for people who are dating.
 
-![Accounting Services](/images/austin-distel-nGc5RT2HmF0-unsplash.jpg)
-
-More information about love waves support...
+Please visit [lovewaves.app](https://lovewaves.app) for more information about Love waves.
