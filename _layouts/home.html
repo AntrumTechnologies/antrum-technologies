@@ -21,10 +21,10 @@ bodyClass: "page-home"
 
 <div class="strip">
   <div class="container pt-6 pb-6 pb-md-10">
-    <h3>Need support? We are here to help you</h3>
+    <h3>Our solutions</h3>
     <div class="row justify-content-start">
       {% assign limit = site.home.limit_services | default: 6 %}
-      {% for service in site.support limit: limit %}
+      {% for service in site.solutions limit: limit %}
       <div class="col-12 col-md-4 mb-1">
         <div class="service service-summary">
           <div class="service-content">
@@ -39,7 +39,7 @@ bodyClass: "page-home"
     </div>
     <div class="row justify-content-center">
       <div class="col-auto">
-        <a class="button button-primary" href="{{ "support" | relative_url }}">View our support page</a>
+        <a class="button button-primary" href="{{ "solutions" | relative_url }}">Discover our solutions</a>
       </div>
     </div>
   </div>

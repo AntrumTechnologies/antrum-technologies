@@ -5,20 +5,17 @@ main:
   - name: "About"
     url: "/about/"
     weight: 2
-  - name: "Support"
-    url: "/support/"
+  - name: "Solutions"
+    url: "/solutions/"
     weight: 3
   - name: "Contact"
     url: "/contact/"
     weight: 4
 
 footer:
-  - name: "About"
-    url: "/about/"
+  - name: "Privacy policy"
+    url: "/privacy-policy/"
     weight: 1
-  - name: "Support"
-    url: "/support/"
+  - name: "Terms and conditions"
+    url: "/terms-and-conditions/"
     weight: 2
-  - name: "Contact"
-    url: "/contact/"
-    weight: 3

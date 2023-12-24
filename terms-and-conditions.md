@@ -1,8 +1,10 @@
 ---
-title: "Terms and Conditions"
-date: 2018-12-28T15:14:39+10:00
-weight: 4
+title: Terms and Conditions
+layout: page
+description: Our terms and conditions outline the rules and regulations for the use of Antrum Technologies' their software.
+bodyClass: page-terms-and-conditions
 ---
+
 
 Our terms and conditions outline the rules and regulations for the use of Antrum Technologies' their software.
 

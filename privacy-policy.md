@@ -1,7 +1,8 @@
 ---
-title: "Privacy Policy"
-date: 2019-01-28T15:15:26+10:00
-weight: 2
+title: Privacy Policy
+layout: page
+description: Our privacy policy explains how we handle your personal information and why we care.
+bodyClass: page-privacy-policy
 ---
 
 Our privacy policy explains how we handle your personal information and why we care.
