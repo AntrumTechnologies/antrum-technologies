@@ -1,7 +1,7 @@
 ---
 title: "Racket planner"
 date: 2023-12-24T10:16:46+01:00
-weight: 96
+weight: 60
 ---
 
 With our Racket planner, you can say farewell to the complexities of (manual) tournament scheduling. 
