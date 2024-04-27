@@ -2,11 +2,11 @@ main:
   - name: "Home"
     url: "/"
     weight: 1
-  - name: "About"
-    url: "/about/"
+  - name: "Over ons"
+    url: "/over-ons/"
     weight: 2
-  - name: "Solutions"
-    url: "/solutions/"
+  - name: "Producten"
+    url: "/products/"
     weight: 3
   - name: "Contact"
     url: "/contact/"

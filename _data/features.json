@@ -1,7 +1,7 @@
 [
   {
-    "title": "Solution oriented",
-    "description": "We are solution oriented and create solutions that fill a void.",
+    "title": "Onderhoud op maat",
+    "description": "Onderhoud aan onze systemen is amper nodig. Maar wij nemen ook het onderhoud voor je uit handen. Zodat je kunt genieten van de voordelen van domotica zonder gedoe.",
     "image": {
       "url": "images/features/noun_The Process_1885341.svg",
       "width": 80,
@@ -9,8 +9,8 @@
     }
   },
   {
-    "title": "Flexbility at its core",
-    "description": "Our team is able to develop new apps no matter the constraints.",
+    "title": "Software oplossingen",
+    "description": "Wij zijn flexibel en denken mee. Ongeacht het probleem, wij hebben een oplossing.<br><br><a class=\"button button-primary\" href=\"/solutions\">Ontdek onze software</a>",
     "image": {
       "url": "images/features/noun_3d modeling_1885342.svg",
       "width": 80,

@@ -4,8 +4,8 @@ date: 2023-12-24T10:16:46+01:00
 weight: 60
 ---
 
-With our Racket planner, you can say farewell to the complexities of (manual) tournament scheduling. 
+Met de Racket planner kun je afscheid nemen van de complexiteit van (handmatige) toernooiplanning.
 
-Our user-friendly interface empowers you to create, customize, and manage tournaments with just a few clicks. From tennis and badminton to squash and padel, our planner can handle all your tournament needs.
+Door de gebruiksvriendelijke interface kun je met slechts een paar klikken toernooien maken, aanpassen en beheren. Van tennis en badminton tot squash en padel, onze planner kan veel verschillende toernooien aan.
 
-See [racketplanner.nl](https://racketplanner.nl) for more information.
+Zie [racketplanner.nl](https://racketplanner.nl) voor meer informatie.

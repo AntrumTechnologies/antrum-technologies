@@ -21,17 +21,17 @@ bodyClass: "page-home"
 
 <div class="strip">
   <div class="container pt-6 pb-6 pb-md-10">
-    <h3>Our solutions</h3>
+    <h3>Onze producten</h3>
     <div class="row justify-content-start">
       {% assign limit = site.home.limit_services | default: 6 %}
-      {% for service in site.solutions limit: limit %}
+      {% for service in site.products limit: limit %}
       <div class="col-12 col-md-4 mb-1">
         <div class="service service-summary">
           <div class="service-content">
             <h2 class="service-title">
               <a href="{{ service.url | relative_url }}">{{ service.title }}</a>
             </h2>
-            <p>{{ service.content | markdownify | strip_html | truncate: 110 }}</p>
+            <p>{{ service.content | markdownify | strip_html | truncate: 180 }}</p>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ bodyClass: "page-home"
     </div>
     <div class="row justify-content-center">
       <div class="col-auto">
-        <a class="button button-primary" href="{{ "solutions" | relative_url }}">Discover our solutions</a>
+        <a class="button button-primary" href="{{ "products" | relative_url }}">Ontdek onze producten</a>
       </div>
     </div>
   </div>
@@ -48,11 +48,11 @@ bodyClass: "page-home"
 {% if site.data.features %}
 <div class="strip strip-grey">
   <div class="container pt-6 pb-6 pt-md-10 pb-md-10">
-    <h2>Our services</h2><br />
+    <h2>Onze services</h2><br />
     <div class="row justify-content-center">
 
       {% for feature in site.data.features %}
-      <div class="col-12 col-md-6 col-lg-4 mb-2">
+      <div class="col-12 col-md-6 col-lg-6 mb-2">
         <div class="feature">
           {% if feature.image %}
           <div class="feature-image"><img alt="{{ feature.title }} logo" src="{{ feature.image.url | relative_url }}" width="{{ feature.image.width }}" height="{{ feature.image.height }}" /></div>

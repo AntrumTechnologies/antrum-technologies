@@ -1,6 +1,7 @@
 baseurl: '/'
 permalink: pretty
 title: 'Antrum Technologies'
+google_analytics: 'G-4N3L3J6GJK'
 
 logo:
   mobile: "images/logo/antrum-icon.svg"
@@ -15,6 +16,9 @@ home:
   limit_services: 6
 
 collections:
+  products:
+    output: true
+    sort_by: weight
   solutions:
     output: true
     sort_by: weight
@@ -24,9 +28,14 @@ collections:
 defaults:
   - scope:
       path: ""
+      type: "products"
+    values:
+      layout: "product-single"
+  - scope:
+      path: ""
       type: "solutions"
     values:
-      layout: "solution-single"
+      layout: "product-single"
   - scope:
       path: ""
       type: "team"

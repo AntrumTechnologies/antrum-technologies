@@ -1,13 +1,13 @@
 ---
-title: Home
+title: Home - Antrum Technologies
 layout: home
-description: We create solutions that fill a void
-intro_image: "images/illustrations/undraw_develop_app_re_bi4i.svg"
+description: Automatisering en software oplossingen voor thuis
+intro_image: "images/illustrations/undraw_smart_home_re_orvn.svg"
 intro_image_absolute: true
 intro_image_hide_on_mobile: true
 show_call_box: true
 ---
 
-# We create solutions that fill a void
+# Domotica op maat
 
-Antrum Technologies is the organization behind Love waves, Racket planner, and many more solutions yet to come.
+Eenvoudige controle,<br>grenzeloze mogelijkheden.
