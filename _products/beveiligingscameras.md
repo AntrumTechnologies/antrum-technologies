@@ -4,7 +4,7 @@ date: 2023-04-17T18:12:01+01:00
 weight: 50
 ---
 
-Ultieme beveliging door middel van camera's.
+Ultieme beveliging door middel van camera's. Onze camera voor optimale beveiliging is volledig te integreren met de alles-in-1 domotica oplossing. Onze camera voor alledaags gebruik is plug-and-play en binnen enkele minuten zelf te installeren.
 
 ## Alledaags gebruik
 
@@ -21,12 +21,12 @@ Prijs: vanaf &euro;75,00 per stuk
 ### Specificaties
 
 * Aansluiten via WiFi en op stopcontact
-* Inclusief lokale opslag van camera beelden (SD kaart meegeleverd)
+* Inclusief lokale opslag van camera beelden (64 GB SD kaart meegeleverd)
 * 1080P video resolutie
 * 5 meter nachtzicht
 * Bewegingsdetectie bij daglicht
 * Geintegreerde microfoon & speaker
-* Waterbestendig
+* Waterbestendig (IP64)
 
 ## Optimale beveiliging
 
@@ -49,7 +49,7 @@ Kies je voor deze camera, dan kunnen we ook meteen je WiFi aanpakken. Informeer 
 * 9 meter nachtzicht
 * AI bewegingsdetectie
 * Geintegreerde microfoon
-* Waterbestendig
+* Waterbestendig (IP64)
 
 ## Interesse? Contacteer ons
 
