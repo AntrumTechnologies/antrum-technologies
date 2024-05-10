@@ -10,7 +10,7 @@ Alles van verlichting en alarm systemen, tot energie monitoring en automatiserin
 
 ![Alarm systeem keypad](/images/keypad.jpg)
 
-Onze oplossingen worden aangestuurd door een mini computer vanuit de meterkast. Deze aansturing is beschikbaar vanaf &euro;220,00.
+Onze oplossingen worden aangestuurd door een mini computer vanuit de meterkast. Deze aansturing is beschikbaar vanaf &euro;220,00. Wat deze aansturing precies omvat kunt u [hier](/blog/domotica-aansturing) in detail lezen.
 
 Een onbeperkt aantal sensoren, slimme verlichting, of alarm systeem kunt u hieraan toegevoegen. De prijs hiervoor is op aanvraag. Neem contact met ons op voor een passende aanbieding.
 
@@ -69,7 +69,7 @@ Het dashboard is volledig naar eigen wens in te richten, en vanaf afstand te ber
 
 Van de installatie van controllers en sensoren tot het programmeren van uw gewenste automatiseringsscenario's, we nemen het hele proces uit handen, zodat u kunt genieten van de voordelen van domotica zonder gedoe. 
 
-Met onze ervaring zorgen we ervoor dat uw domoticasysteem perfect is afgestemd op je behoeften en levensstijl. 
+Met onze ervaring zorgen we ervoor dat uw domoticasysteem perfect is afgestemd op uw behoeften en levensstijl. 
 
 De installatie geschiedt volledig op nacalculatie.
 

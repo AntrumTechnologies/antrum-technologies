@@ -8,7 +8,7 @@ Ultieme beveliging door middel van camera's. Onze camera voor optimale beveiligi
 
 ## Alledaags gebruik
 
-Deze camera kenmerkt zich door zijn eenvoudige installatie en gebruiksgemak. De app geeft je toegang tot de camera op afstand. 
+Deze camera kenmerkt zich door zijn eenvoudige installatie en gebruiksgemak. De app geeft u toegang tot de camera op afstand. 
 
 De bewegingsdetectie zorgt ervoor dat er alleen beelden worden opgeslagen zodra er beweging geregistreerd wordt. Beelden kunnen maar liefst 5 jaar lang opgeslagen worden.
 
@@ -30,7 +30,7 @@ Prijs: vanaf &euro;75,00 per stuk
 
 ## Optimale beveiliging
 
-Voor optimaal nachtzicht, lokale opslag van alle beelden, en onbeperkte uitbreidingsmogelijkheden, kies je voor deze camera.
+Voor optimaal nachtzicht, lokale opslag van alle beelden, en onbeperkte uitbreidingsmogelijkheden, kiest u voor deze camera.
 
 Daarnaast is deze camera volledig integreerbaar met [onze domotica oplossingen](/products/alles-in-1-domotica/).
 
@@ -40,11 +40,11 @@ Prijs: vanaf &euro;155,00 per stuk
 
 Exclusief hub a &euro;440 voor aansturing en opslag van beelden. 
 
-Kies je voor deze camera, dan kunnen we ook meteen je WiFi aanpakken. Informeer naar de mogelijkheden.
+Kiest u voor deze camera, dan kunnen we ook meteen uw WiFi aanpakken. Informeer naar de mogelijkheden.
 
 ### Specificaties
 
-* Aansluiten op ethernet (internet) kabel
+* Aansluiten op ethernet (internet) kabel (Power over Ethernet)
 * 2K (4MP) video resolutie
 * 9 meter nachtzicht
 * AI bewegingsdetectie
