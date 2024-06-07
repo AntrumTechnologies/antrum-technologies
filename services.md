@@ -1,6 +1,6 @@
 ---
 title: Software oplossingen
-layout: solutions
+layout: services
 description: Ontdek onze software oplossingen
 intro_image: "images/illustrations/undraw_develop_app_re_bi4i.svg"
 intro_image_absolute: true

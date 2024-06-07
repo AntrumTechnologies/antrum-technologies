@@ -22,16 +22,16 @@ bodyClass: "page-home"
 <div class="strip">
   <div class="container pt-6 pb-6 pb-md-10">
     <div class="row justify-content-start">
-      {% for service in site.products-home %}
+      {% for service in site.home-automation-intro %}
       <div class="col-12 col-md-6 mb-1">
         <div class="service service-summary">
           <div class="service-content">
             <h2 class="service-title">
               {% if service.icon %}<img src="/images/illustrations{{ service.icon | relative_url }}" class="icon">{% endif %}
-              <a href="/products/{{ service.permalink }}">{{ service.title }}</a>
+              <a href="/home-automation/{{ service.permalink }}">{{ service.title }}</a>
             </h2>
             {{ service.content }}
-            <p><a href="/products/{{ service.permalink }}">&raquo; Lees meer</a></p>
+            <p><a href="/home-automation/{{ service.permalink }}">&raquo; Lees meer</a></p>
           </div>
         </div>
       </div>
@@ -39,7 +39,7 @@ bodyClass: "page-home"
     </div>
     <div class="row justify-content-center">
       <div class="col-auto">
-        <a class="button button-primary" href="{{ "products" | relative_url }}">Ontdek onze expertises</a>
+        <a class="button button-primary" href="{{ "home-automation" | relative_url }}">Ontdek onze oplossingen</a>
       </div>
     </div>
   </div>

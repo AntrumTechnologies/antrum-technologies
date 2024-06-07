@@ -65,6 +65,9 @@ $sub-footer-text-color: $white;
 @import "pages/page-teams";
 @import "pages/page-service";
 
+// Bootstrap utilities
+@import "bootstrap/_tables";
+
 body {
   font-size: 16px;
   line-height: 1.2;

@@ -1,8 +1,9 @@
 ---
 title: Home - Antrum Technologies
 layout: home-automation
+intro_image: "images/illustrations/undraw_setup_wizard_re_nday.svg"
 ---
 
-# Alles-in-1 <span style="color:#6c63ff">domotica</span><br>op maat
+# Ontdek onze oplossingen
 
-Maatwerk oplossingen om uw huis te automatiseren, beveiligen & slimmer te maken.
+Een overzicht van alle domotica op maat.

@@ -16,16 +16,10 @@ home:
   limit_services: 6
 
 collections:
-  products:
+  home-automation-intro:
     output: true
     sort_by: weight
-  products-home:
-    output: true
-    sort_by: weight
-  solutions:
-    output: true
-    sort_by: weight
-  solutions-home:
+  services:
     output: true
     sort_by: weight
 #  blog:
@@ -39,12 +33,7 @@ collections:
 defaults:
   - scope:
       path: ""
-      type: "products"
-    values:
-      layout: "product-single"
-  - scope:
-      path: ""
-      type: "solutions"
+      type: "services"
     values:
       layout: "product-single"
 #  - scope:
