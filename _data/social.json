@@ -1,5 +1,10 @@
 [
   {
+    "name": "LinkedIn",
+    "link": "https://linkedin.com/company/antrum-technologies",
+    "image": "images/social/linkedin.svg"
+  },
+  {
     "name": "Github",
     "link": "https://github.com/AntrumTechnologies",
     "image": "images/social/github.svg"

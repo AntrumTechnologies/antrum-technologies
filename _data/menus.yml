@@ -5,8 +5,8 @@ main:
   - name: "Over ons"
     url: "/over-ons/"
     weight: 2
-  - name: "Producten"
-    url: "/products/"
+  - name: "Onze oplossingen"
+    url: "/home-automation/"
     weight: 3
   - name: "Contact"
     url: "/contact/"

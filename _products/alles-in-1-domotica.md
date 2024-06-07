@@ -47,18 +47,6 @@ Een onbeperkt aantal sensoren, slimme verlichting, of alarm systeem kunt u hiera
 ![Energie monitoring via slimme meter](/images/p1-meter.webp){:width="383"} ![Bewegingssensor](/images/motion-sensor.jpg){:width="340"}
 ![Slimme verlichting](/images/shelly1.jpg){:width="383"}
 
-## Automatisering
-
-In samenspraak bepalen we wat uw wensen zijn, en realiseren wij deze.
-![Automatisering](/images/nodered.webp)
-Of u nu kiest voor bewegingssensoren, deursensoren, slimme verlichting, en/of een alarm systeem, wij kunnen uw volledige huis automatiseren.
-
-Denk hierbij aan:
-* Lampen automatisch aan laten gaan bij thuiskomst of bij zonsondergang
-* Notificatie zodra er beweging is gedetecteerd terwijl u niet thuis bent
-* Notificatie op de telefoon zodra de wasmachine klaar is
-* Verlichting op het toilet automatiseren
-* Geautomatiseerde tuinberegening
 
 ## Eenvoudige controle 
 

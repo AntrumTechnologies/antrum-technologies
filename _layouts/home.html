@@ -5,14 +5,14 @@ bodyClass: "page-home"
 
 <div class="intro">
   <div class="container">
-    <div class="row justify-content-start">
-      <div class="col-12 col-md-5 col-lg-5 order-2 order-md-1">
+    <div class="row justify-content-center">
+      <div class="col-12 col-md-5 col-lg-6 order-1 order-md-1">
         {{ content }}
-        <br /><br /><br /><br /><br />
+        <br /><br />
       </div>
       {% if page.intro_image %}
-      <div class="col-12 col-md-7 col-lg-7 order-1 order-md-2 position-relative">
-        <img alt="{{ page.title }}" class="intro-image{% if page.intro_image_absolute %} intro-image-absolute{% endif %}{% if page.intro_image_hide_on_mobile %} intro-image-hide-mobile{% endif %}" src="{{ page.intro_image | relURL }}" style="max-height: 550px" />
+      <div class="col-8 col-md-7 col-lg-6 order-2 order-md-2 position-relative">
+        <img alt="{{ page.title }}" class="intro-image{% if page.intro_image_absolute %} intro-image-absolute{% endif %}{% if page.intro_image_hide_on_mobile %} intro-image-hide-mobile{% endif %}" src="{{ page.intro_image | relURL }}" style="max-height: 500px" />
       </div>
       {% endif %}
     </div>
@@ -21,18 +21,17 @@ bodyClass: "page-home"
 
 <div class="strip">
   <div class="container pt-6 pb-6 pb-md-10">
-    <h3>Onze producten</h3>
     <div class="row justify-content-start">
-      {% assign limit = site.home.limit_services | default: 6 %}
-      {% for service in site.products limit: limit %}
-      <div class="col-12 col-md-4 mb-1">
+      {% for service in site.products-home %}
+      <div class="col-12 col-md-6 mb-1">
         <div class="service service-summary">
           <div class="service-content">
             <h2 class="service-title">
-              <a href="{{ service.url | relative_url }}">{{ service.title }}</a>
+              {% if service.icon %}<img src="/images/illustrations{{ service.icon | relative_url }}" class="icon">{% endif %}
+              <a href="/products/{{ service.permalink }}">{{ service.title }}</a>
             </h2>
-            <p>{{ service.content | markdownify | strip_html | truncatewords: 30 }}</p>
-            <p><a href="{{ service.url | relative_url }}">&raquo; Lees meer</a></p>
+            {{ service.content }}
+            <p><a href="/products/{{ service.permalink }}">&raquo; Lees meer</a></p>
           </div>
         </div>
       </div>
@@ -40,11 +39,40 @@ bodyClass: "page-home"
     </div>
     <div class="row justify-content-center">
       <div class="col-auto">
-        <a class="button button-primary" href="{{ "products" | relative_url }}">Ontdek onze producten</a>
+        <a class="button button-primary" href="{{ "products" | relative_url }}">Ontdek onze expertises</a>
       </div>
     </div>
   </div>
 </div>
+
+<!--
+<div class="strip">
+  <div class="container pt-6 pb-6 pb-md-10">
+    <h2>Onze oplossingen</h2>
+    <div class="row justify-content-start">
+      {% for service in site.solutions-home %}
+      <div class="col-12 col-md-6 mb-1">
+        <div class="service service-summary">
+          <div class="service-content">
+            <h2 class="service-title">
+              {% if service.icon %}<img src="/images/illustrations{{ service.icon | relative_url }}" class="icon">{% endif %}
+              <a href="/products/{{ service.permalink }}">{{ service.title }}</a>
+            </h2>
+            {{ service.content }}
+            <p><a href="/products/{{ service.permalink }}">&raquo; Lees meer</a></p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-auto">
+        <a class="button button-primary" href="{{ "products" | relative_url }}">Ontdek onze oplossingen</a>
+      </div>
+    </div>
+  </div>
+</div>
+-->
 
 {% if site.data.features %}
 <div class="strip strip-grey">

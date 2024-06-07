@@ -19,13 +19,21 @@ collections:
   products:
     output: true
     sort_by: weight
+  products-home:
+    output: true
+    sort_by: weight
   solutions:
     output: true
     sort_by: weight
-  blog:
+  solutions-home:
     output: true
     sort_by: weight
+#  blog:
+#    output: true
+#    sort_by: weight
   team:
+    output: true
+  home-automation:
     output: true
 
 defaults:
@@ -39,16 +47,21 @@ defaults:
       type: "solutions"
     values:
       layout: "product-single"
-  - scope:
-      path: ""
-      type: "blog"
-    values:
-      layout: "product-single"
+#  - scope:
+#      path: ""
+#      type: "blog"
+#    values:
+#      layout: "product-single"
   - scope:
       path: ""
       type: "team"
     values:
       layout: "team"
+  - scope:
+      path: ""
+      type: "home-automation"
+    values:
+      layout: "home-automation-single"
 
 sass:
   style: compressed # possible values: nested expanded compact compressed
