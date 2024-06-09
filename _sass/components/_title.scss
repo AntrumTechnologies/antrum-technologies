@@ -8,36 +8,13 @@
 }
 
 .icon {
-  height: 30px;
-  display: inline;
-  margin-top: -5px;
-  margin-right: 5px;
-  /*filter: invert(38%) sepia(44%) saturate(1871%) hue-rotate(219deg) brightness(100%) contrast(103%);*/
+  color: $primary;
+}
+
+.icon-white {
+  color: #fff;
 }
 
 .text-white {
   color: #fff !important;
-}
-
-@media only screen and (max-width: 992px) {
-  .center-everything {
-    text-align: center;
-  }
-
-  .icon {
-    height: 25px;
-    margin-top: 0;
-    margin-bottom: 5px;
-  }
-
-  .text-white {
-    font-size: 0.9em;
-  }
-}
-
-.icon-sm {
-  height: 24px;
-  margin-top: 0;
-  margin-bottom: 5px;
-  margin-right: 5px;
 }

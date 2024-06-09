@@ -1,0 +1,32 @@
+[
+  {
+    "product": "Bewegingssensor",
+    "application": ["fa-regular fa-lightbulb", "fa-regular fa-lock"],
+    "price": "&euro;"
+  },
+  {
+    "product": "Deursensor",
+    "application": ["fa-regular fa-lightbulb", "fa-regular fa-lock"],
+    "price": "&euro;"
+  },
+  {
+    "product": "Shelly",
+    "application": ["fa-regular fa-lightbulb", "fa-regular fa-droplet", "fa-regular fa-blinds"],
+    "price": "&euro; &euro;"
+  },
+  {
+    "product": "Codebedienpaneel",
+    "application": ["fa-regular fa-lock"],
+    "price": "&euro; &euro; &euro;"
+  },
+  {
+    "product": "Temperatuursensor",
+    "application": ["fa-regular fa-droplet"],
+    "price": "&euro;"
+  },
+  {
+    "product": "Weerstation voor buiten",
+    "application": ["fa-regular fa-droplet", "fa-regular fa-blinds"],
+    "price": "&euro; &euro;"
+  }
+]

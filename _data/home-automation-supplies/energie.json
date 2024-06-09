@@ -1,0 +1,27 @@
+[
+  {
+    "product": "P1 meter",
+    "application": ["fa-regular fa-chart-line", "fa-regular fa-gear"],
+    "price": "&euro; &euro;"
+  },
+  {
+    "product": "Watermeter",
+    "application": ["fa-regular fa-chart-line", "fa-regular fa-gear"],
+    "price": "&euro; &euro;"
+  },
+  {
+    "product": "Slimme radiatorknoppen",
+    "application": ["fa-regular fa-gear"],
+    "price": "&euro; &euro; &euro;"
+  },
+  {
+    "product": "Temperatuursensor",
+    "application": ["fa-regular fa-gear"],
+    "price": "&euro;"
+  },
+  {
+    "product": "Deur- & raamsensor",
+    "application": ["fa-regular fa-gear"],
+    "price": "&euro;"
+  }
+]

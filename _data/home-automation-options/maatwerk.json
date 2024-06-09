@@ -1,0 +1,22 @@
+[
+  {
+    "icon": "fa-regular fa-comments",
+    "name": "Advies",
+    "text": "Er zijn legio mogelijkheden om energie te besparen en uw woning slimmer te maken. Wij adviseren u hierin."
+  },
+  {
+    "icon": "fa-regular fa-list-check",
+    "name": "Complete installatie",
+    "text": "Wij verzorgen de complete installatie het gewenste systeem, inclusief configuratie. U hoeft zich helemaal nergens meer zorgen over te maken, wij nemen u alles uit handen."
+  },
+  {
+    "icon": "fa-regular fa-gear",
+    "name": "Configuratie",
+    "text": "Tijdens de installatie gaan we met u in overleg om uw woning volledig naar wens te automatiseren."
+  },
+  {
+    "icon": "fa-regular fa-person-digging",
+    "name": "Onderhoud & ondersteuning",
+    "text": "Wij zijn een partner voor de lange termijn. Ook voor onderhoud & ondersteuning staan wij voor u klaar. Zodat u kunt genieten van de voordelen van domotica zonder gedoe."
+  }
+]

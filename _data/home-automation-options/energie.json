@@ -1,0 +1,12 @@
+[
+  {
+    "icon": "fa-regular fa-chart-line",
+    "name": "Inzicht",
+    "text": "Krijg inzicht in uw energieverbruik door middel van onze slimme stekkers. Ook kunnen we inzicht geven in uw gas verbruik, opbrengst van uw zonnepanelen, en sluimerverbruik."
+  },
+  {
+    "icon": "fa-regular fa-gear",
+    "name": "Automatisering",
+    "text": "Uw energieverbruik kan verbeterd worden door onze automatisering, zo kunnen we bijvoorbeeld de thermostaat automatisch lager zetten wanneer een deur of raam open gezet wordt."
+  }
+]

@@ -1,0 +1,17 @@
+[
+  {
+    "icon": "fa-regular fa-siren-on",
+    "name": "Alarmsysteem",
+    "text": "Met behulp van deur- en bewegingsensoren kunnen we uw woning beveiligen tegen indringers. Deze sensoriek kan gekoppeld worden aan een sirene of push notificaties op uw telefoon."
+  },
+  {
+    "icon": "fa-regular fa-video",
+    "name": "Camera's",
+    "text": "De camera's die wij plaatsen rond uw woning kunnen geautomatiseerd worden zodat u een melding krijgt wanneer er beweging gedetecteerd wordt. De camera beelden zijn voor bepaalde tijd terug te kijken."
+  },
+  {
+    "icon": "fa-regular fa-lock",
+    "name": "Automatisch in- & uitschakelen",
+    "text": "Vergeet nooit meer het alarm in of uit te schakelen. Het alarmsysteem schakelt automatisch in zodra alle bewoners niet meer thuis zijn, en schakelt automatisch uit zodra er weer een bewoner thuis komt."
+  }
+]

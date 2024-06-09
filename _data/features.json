@@ -2,19 +2,11 @@
   {
     "title": "Onderhoud op maat",
     "description": "Wij nemen ook het onderhoud voor u uit handen. Zodat u kunt genieten van de voordelen van domotica zonder gedoe.<br><br><a class=\"button button-primary\" href=\"/home-automation/maatwerk/\">Ontdek onze alles-in-1 domotica</a>",
-    "image": {
-      "url": "images/features/noun_The Process_1885341.svg",
-      "width": 80,
-      "height": 80
-    }
+    "icon": "fa-regular fa-person-digging"
   },
   {
     "title": "Software oplossingen",
     "description": "Wij zijn flexibel en denken mee. Ongeacht het probleem, wij hebben een oplossing.<br><br><a class=\"button button-primary\" href=\"/services\">Ontdek onze software</a>",
-    "image": {
-      "url": "images/features/noun_3d modeling_1885342.svg",
-      "width": 80,
-      "height": 80
-    }
+    "icon": "fa-regular fa-code"
   }
 ]

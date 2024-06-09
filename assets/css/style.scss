@@ -2,9 +2,6 @@
 ---
 
 // Colors
-/*$primary: #6C63FF;
-$primary-dark: #1B1940;*/
-
 $primary: #6B6DD6;
 $primary-dark: #001D67;
 
@@ -34,6 +31,7 @@ $sub-footer-text-color: $white;
 @import "bootstrap-variables";
 @import "bootstrap/bootstrap-reboot";
 @import "bootstrap/bootstrap-grid";
+@import "bootstrap/_tables";
 // @import 'bootstrap/bootstrap'; // Uncomment this line to import the entire Bootstrap library
 
 // Libraries
@@ -64,9 +62,6 @@ $sub-footer-text-color: $white;
 @import "pages/page-home";
 @import "pages/page-teams";
 @import "pages/page-service";
-
-// Bootstrap utilities
-@import "bootstrap/_tables";
 
 body {
   font-size: 16px;

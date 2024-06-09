@@ -4,34 +4,25 @@ bodyClass: "page-home-automation"
 ---
 
 <div class="container pb-6 pt-6 pt-md-10 pb-md-10">
-  <h1 class="title">{{page.title}}</h1>
+  <h1 class="title"><i class="{{ page.icon }}" class="icon-sm"></i> {{ page.title }}</h1>
+
+  <p>{{ page.content }}</p>
+
   <div class="row justify-content-start">
       <div class="col-lg-6 col-md-12">
-          <h2 class="mb-2">Toepassingen</h2>
+          <h2 class="mb-2">Mogelijkheden</h2>
 
+          {% for application in site.data.home-automation-options[page.slug] %}
           <div class="card" style="border: 1px solid #dee2e6; padding: 10px; border-radius: 10px; margin: 20px 10px;">
             <div class="card-body">
-              <h3 class="card-title"><img src="/images/illustrations/lightbulb-regular.svg" class="icon-sm"> Verlichting</h3>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+              <h3 class="card-title"><i class="{{ application.icon }}" class="icon-sm"></i> {{ application.name }}</h3>
+              <p class="card-text">{{ application.text }}</p>
             </div>
           </div>
-
-          <div class="card" style="border: 1px solid #dee2e6; padding: 10px; border-radius: 10px; margin: 20px 10px;">
-            <div class="card-body">
-              <h3 class="card-title"><img src="/images/illustrations/lock-solid.svg" class="icon-sm"> Alarmsysteem</h3>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
-
-          <div class="card" style="border: 1px solid #dee2e6; padding: 10px; border-radius: 10px; margin: 20px 10px;">
-            <div class="card-body">
-              <h3 class="card-title"><img src="/images/illustrations/droplet-solid.svg" class="icon-sm"> Water beregening</h3>
-              <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
-          </div>
+          {% endfor %}
       </div>
       <div class="col-lg-6 col-md-12">
-        <h2 class="mb-2">Benodigdheden</h2>
+        <h2 class="mb-2">Producten</h2>
 
         <table class="table">
           <thead>
@@ -42,16 +33,13 @@ bodyClass: "page-home-automation"
             </tr>
           </thead>
           <tbody>
+            {% for supply in site.data.home-automation-supplies[page.slug] %}
             <tr>
-              <td>Shelly</td>
-              <td><img src="/images/illustrations/lightbulb-regular.svg" class="icon-sm"> <img src="/images/illustrations/droplet-solid.svg" class="icon-sm"></td>
-              <td>&euro;&euro;</td>
+              <td>{{ supply.product }}</td>
+              <td>{% for icon in supply.application %}<i class="{{ icon }}" class="icon-sm"></i> {% endfor %}</td>
+              <td>{{ supply.price }}</td>
             </tr>
-            <tr>
-              <td>Bewegingsensor</td>
-              <td><img src="/images/illustrations/lightbulb-regular.svg" class="icon-sm"> <img src="/images/illustrations/lock-solid.svg" class="icon-sm"></td>
-              <td>&euro;</td>
-            </tr>
+            {% endfor %}
           </tbody>
         </table>
       </div>
@@ -72,7 +60,7 @@ bodyClass: "page-home-automation"
 
 
   <h2 class="mt-4 mb-2">Maatwerk</h2>
-  <p class="lead">Al onze oplossingen zijn volledig maatwerk, inclusief installatie & configuratie. Contacteer ons voor een passende offerte.</p>
+  <p class="lead">Al onze oplossingen zijn volledig maatwerk, inclusief installatie & configuratie. Contacteer ons voor advies en een passende offerte.</p>
   <div class="row justify-content-center">
     <div class="col-auto">
       <a class="button button-primary" href="{{ "contact" | relative_url }}">Neem contact op</a>

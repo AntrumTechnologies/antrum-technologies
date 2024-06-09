@@ -1,0 +1,22 @@
+[
+  {
+    "product": "Advies",
+    "application": ["fa-regular fa-comments"],
+    "price": "Op aanvraag"
+  },
+  {
+    "product": "Installatie",
+    "application": ["fa-regular fa-list-check"],
+    "price": "Op aanvraag"
+  },
+  {
+    "product": "Configuratie",
+    "application": ["fa-regular fa-gear"],
+    "price": "Op aanvraag"
+  },
+  {
+    "product": "Onderhoud",
+    "application": ["fa-regular fa-person-digging"],
+    "price": "Op aanvraag"
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "icon": "fa-regular fa-lightbulb",
+    "name": "Verlichting",
+    "text": "Schakel uw verlichting in op basis van tijd of zonsondergang. Zowel uw binnen als buitenlampen kunnen wij automatiseren."
+  },
+  {
+    "icon": "fa-regular fa-lock",
+    "name": "Alarmsysteem",
+    "text": "Signaleer een indringers met behulp van onze deur- en bewegingsensoren, en schakel de sirene in & zet alle verlichting aan."
+  },
+  {
+    "icon": "fa-regular fa-droplet",
+    "name": "Water beregening",
+    "text": "Automatiseer de beregening van uw tuin bij droogte of tijdsgestuurd."
+  },
+  {
+    "icon": "fa-regular fa-blinds",
+    "name": "Rolluiken & gordijnen",
+    "text": "Automatiseer het openen en sluiten van uw rolluiken en gordijnen, zodra de zon schijnt of de avond valt."
+  }
+]

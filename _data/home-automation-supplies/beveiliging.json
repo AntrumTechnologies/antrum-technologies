@@ -1,0 +1,27 @@
+[
+  {
+    "product": "Bewegingssensor",
+    "application": ["fa-regular fa-siren-on", "fa-regular fa-lock"],
+    "price": "&euro;"
+  },
+  {
+    "product": "Deursensor",
+    "application": ["fa-regular fa-siren-on", "fa-regular fa-lock"],
+    "price": "&euro;"
+  },
+  {
+    "product": "Camera",
+    "application": ["fa-regular fa-video"],
+    "price": "&euro; &euro; &euro;"
+  },
+  {
+    "product": "Codebedienpaneel",
+    "application": ["fa-regular fa-siren-on"],
+    "price": "&euro; &euro; &euro;"
+  },
+  {
+    "product": "RFID-tag voor codebedienpaneel",
+    "application": ["fa-regular fa-siren-on"],
+    "price": "&euro;"
+  }
+]

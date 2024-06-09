@@ -13,6 +13,10 @@
   <!-- Self host font -->
   <!-- <link rel="preload" href="{{ '/assets/fonts/playfair-display.woff2' | relative_url }}" as="font" type="font/woff2" crossorigin> -->
   <link href="{{ '/assets/css/style.css' | relative_url }}" rel="stylesheet">
+  <!-- Self host FA -->
+  <link href="{{ '/assets/fontawesome/css/fontawesome.css' | relative_url }}" rel="stylesheet" />
+  <link href="{{ '/assets/fontawesome/css/regular.css' | relative_url }}" rel="stylesheet" />
+  <link href="{{ '/assets/fontawesome/css/brands.css' | relative_url }}" rel="stylesheet" />
   
   {% if page.description %}<meta name="description" content="{{ page.description }}" />{% endif %}
   {% if page.meta_title %}<meta property="og:title" content="{{ page.meta_title }}"/>{% else %}<meta property="og:title" content="{{ page.title }}"/>{% endif %}
@@ -33,7 +37,12 @@
   {% include main-menu-mobile.html %}
   <div id="wrapper" class="wrapper">
     {% include header.html headerClass='header-extra' %}
-    <div class="accent"></div>
+    <div class="accent"><div class="container"><div class="row" style="text-align: center;">
+      <div class="col-3"><a href="/home-automation/automatisering"><i class="fa-regular fa-robot icon-bar"></i></a></div>
+      <div class="col-3"><a href="/home-automation/beveiliging"><i class="fa-regular fa-house-lock icon-bar"></i></a></div>
+      <div class="col-3"><a href="/home-automation/energie"><i class="fa-regular fa-bolt icon-bar"></i></a></div>
+      <div class="col-3"><a href="/home-automation/maatwerk"><i class="fa-regular fa-pen-ruler icon-bar"></i></a></div>
+    </div></div></div>
     {{content}}
   </div>
   {% include footer.html %}

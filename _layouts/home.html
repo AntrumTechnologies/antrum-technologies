@@ -27,7 +27,7 @@ bodyClass: "page-home"
         <div class="service service-summary">
           <div class="service-content">
             <h2 class="service-title">
-              {% if service.icon %}<img src="/images/illustrations{{ service.icon | relative_url }}" class="icon">{% endif %}
+              {% if service.icon %}<i class="{{ service.icon }} fa-fw icon"></i>{% endif %}
               <a href="/home-automation/{{ service.permalink }}">{{ service.title }}</a>
             </h2>
             {{ service.content }}
@@ -83,8 +83,8 @@ bodyClass: "page-home"
       {% for feature in site.data.features %}
       <div class="col-12 col-md-6 col-lg-6 mb-2">
         <div class="feature">
-          {% if feature.image %}
-          <div class="feature-image"><img alt="{{ feature.title }} logo" src="{{ feature.image.url | relative_url }}" width="{{ feature.image.width }}" height="{{ feature.image.height }}" /></div>
+          {% if feature.icon %}
+          <div class="feature-image"><i class="{{ feature.icon }} fa-fw" style="font-size: 4rem;"></i></div>
           {% endif %}
           <h2 class="feature-title">{{ feature.title }}</h2>
           <div class="feature-content">{{ feature.description }}</div>
