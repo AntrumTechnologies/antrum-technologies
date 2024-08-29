@@ -22,9 +22,9 @@ collections:
   services:
     output: true
     sort_by: weight
-#  blog:
-#    output: true
-#    sort_by: weight
+  blog:
+    output: true
+    sort_by: date
   team:
     output: true
   home-automation:
@@ -35,12 +35,12 @@ defaults:
       path: ""
       type: "services"
     values:
-      layout: "product-single"
-#  - scope:
-#      path: ""
-#      type: "blog"
-#    values:
-#      layout: "product-single"
+      layout: "single"
+  - scope:
+      path: ""
+      type: "blog"
+    values:
+      layout: "single"
   - scope:
       path: ""
       type: "team"
