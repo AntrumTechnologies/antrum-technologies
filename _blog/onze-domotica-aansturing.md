@@ -1,6 +1,7 @@
 ---
 title: "Onze domotica aansturing"
-date: 2023-04-17T18:12:01+01:00
+date: 2024-08-22
+author: "Patrick van Broeckhuijsen"
 ---
 
 De veelzijdige [Raspberry Pi](https://www.raspberrypi.com/) - een mini computer, vormt het kloppende hart van onze domotica oplossingen. Met deze krachtige en flexibele controller heeft u de controle over alle aspecten van uw woning.
@@ -62,3 +63,6 @@ Ongeacht uw router configuratie, is het mogelijk om te verbinden met Home Assist
 Lees meer over hoe Cloudflare werkt op [cloudflare.com](https://www.cloudflare.com/).
 
 {% include call.html show_button=true %}
+
+
+<em><small>Door: Patrick van Broeckhuijsen</small></em>

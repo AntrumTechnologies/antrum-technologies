@@ -1,6 +1,7 @@
 ---
 title: "Huis automatisering. Hoe werkt het?"
-date: 2023-04-17T18:12:01+01:00
+date: 2024-08-30
+author: "Tom Hoogerwaard"
 ---
 
 Een gehele woning automatiseren vereist kennis en ervaring. Door de juiste vragen te stellen werken we een automatiseringsplan voor u uit.
@@ -33,3 +34,6 @@ Nadat we alle scenario's in kaart hebben gebracht, werken wij deze voor u uit. D
 Enerzijds werken wij met standaard, herbruikbare bouwblokken. Waaronder de automatisering voor het alarmsysteem. Anderzijds bouwen wij volledig op maat gemaakte automatiserings scenario's, want iedereen zijn wensen zijn uniek.
 
 {% include call.html show_button=true %}
+
+
+<em><small>Door: Tom Hoogerwaard</small></em>

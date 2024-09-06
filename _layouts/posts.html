@@ -13,13 +13,14 @@ bodyClass: "page-posts"
 
 <div class="container pt-6 pb-6">
   <div class="row">
-    {% for service in site.blog %}
+    {% for service in site.blog reversed %}
     <div class="col-12 col-md-6 mb-3">
       <div class="service service-summary">
         <div class="service-content">
           <h2 class="service-title">
             <a href="{{ service.url | relative_url }}">{{ service.title }}</a>
           </h2>
+          <p>{{ service.date | date: "%D" }} - {{service.author}}</p>
           <p>{{ service.content | markdownify | strip_html | truncatewords: 30 }}</p>
           <p><a href="{{ service.url | relative_url }}">&raquo; Lees meer</a></p>
         </div>

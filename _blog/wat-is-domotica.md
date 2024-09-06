@@ -1,6 +1,7 @@
 ---
 title: "Wat is domotica?"
-date: 2023-04-17T18:12:01+01:00
+date: 2024-07-11
+author: "Patrick van Broeckhuijsen"
 ---
 
 Domotica is een verzamelnaam voor alle apparaten die helpen om alledaagse taken in huis te automatiseren. Met domotica maakt u uw huis slim. Van slimme thermostaten tot geavanceerde beveiligingssystemen, domotica biedt een breed scala aan mogelijkheden voor woningeigenaren om hun leefruimtes te transformeren.
@@ -35,3 +36,6 @@ Met deze uitdagingen in het achterhoofd hebben wij ervoor gekozen te werken met 
 Ontdek [onze domotica aansturing en welke producten hieraan te koppelen zijn](/blog/onze-domotica-aansturing). 
 
 {% include call.html show_button=true %}
+
+
+<em><small>Door: Patrick van Broeckhuijsen</small></em>
