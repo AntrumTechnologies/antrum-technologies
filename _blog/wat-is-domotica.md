@@ -29,7 +29,7 @@ De adoptie van domotica biedt tal van voordelen voor woningeigenaren:
 
 Hoewel de voordelen duidelijk zijn, brengt de implementatie van domotica ook uitdagingen met zich mee, zoals de moeilijkheidsgraad voor gebruikers om zelf zaken te installeren of automatiseren, en de interoperabiliteit tussen verschillende slimme apparaten en platforms. Wij nemen dit graag voor u uit handen.
 
-### Onze onze domotica oplossingen
+### Onze domotica oplossingen
 
 Met deze uitdagingen in het achterhoofd hebben wij ervoor gekozen te werken met een systeem waarbij lokale controle en privacy voorop staan.
 
