@@ -8,7 +8,7 @@ De veelzijdige [Raspberry Pi](https://www.raspberrypi.com/) - een mini computer,
 
 Aangezien de Raspberry Pi uitgebreidt kan worden met een ontelbare hoeveelheid aan hardware en software is de Raspberry Pi de ideale aansturing van uw woning.
 
-![Photo of Raspberry Pi by Harrison Broadbent on Unsplash](/images/harrison-broadbent-hSHNPyND_dU-unsplash.jpg)
+![Photo of Raspberry Pi by Harrison Broadbent on Unsplash](/images/harrison-broadbent-hSHNPyND_dU-unsplash.jpg){:.drop-shadow}
 
 Door gebruik te maken van de Raspberry Pi kunnen we koppelen met alle populaire bestaande apparaten zoals die van IKEA, Sonos, Philips Hue, Somfy, Fibaro en vele andere merken. 
 
@@ -45,14 +45,16 @@ Home Assistant is volledig open source waarbij lokale controle en privacy voorop
 De Home Assistant app is gratis beschikbaar voor iOS en Android.
 
 Lees meer over Home Assistant op [home-assistant.io](https://www.home-assistant.io/).
-![Dashboard](/images/dashboard.png)
+
+![Dashboard](/images/dashboard.png){:.drop-shadow}
 
 ## Node-RED
 
 De kracht van domotica zit 'm in de automatiserings mogelijkheden. 
 
 Door gebruik te maken van [Node-RED](https://nodered.org/) kunnen wij maatwerk leveren. Met deze grafische programmeertaal bouwen we automatiseringen op basis van uw specifieke behoeften en wensen, zodat uw thuiservaring precies is zoals u het wilt.
-![Automatisering](/images/nodered.webp)
+
+![Automatisering](/images/nodered.webp){:.drop-shadow}
 
 Enerzijds werken wij met standaard, herbruikbare bouwblokken. Waaronder de automatisering voor het alarmsysteem. Anderzijds bouwen wij volledig op maat gemaakte automatiserings scenario's, want iedereen zijn wensen zijn uniek.
 

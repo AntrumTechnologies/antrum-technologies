@@ -9,7 +9,7 @@ Bij ons draait alles om het cre&euml;ren van slimmere en meer verbonden leefomge
 
 Van de installatie van controllers en sensoren tot het programmeren van de gewenste automatiseringsscenario's, we nemen het hele proces uit handen, zodat u kunt genieten van de voordelen van domotica zonder gedoe. Met onze ervaring en toewijding zorgen we ervoor dat uw domoticasysteem perfect is afgestemd op uw behoeften en levensstijl.
 
-![Skyline van Eindhoven](/images/rutger-heijmerikx-A-HbQ8-VIFs-unsplash.jpg)
+![Skyline van Eindhoven](/images/rutger-heijmerikx-A-HbQ8-VIFs-unsplash.jpg){:.drop-shadow}
 
 Wat ons echt onderscheidt, is onze toewijding aan maatwerk. We bouwen automatiseringen op basis van uw specifieke eisen, waardoor uw huis automatisering perfect aansluit bij uw levensstijl. Bovendien bieden wij een uitgebreid assortiment aan producten, waaronder beveiligingscamera's, sensoren en energiemonitoringapparatuur, zodat u de controle hebt over elk aspect van uw woning.
 

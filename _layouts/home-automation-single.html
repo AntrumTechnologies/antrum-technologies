@@ -49,7 +49,7 @@ bodyClass: "page-home-automation"
   <div class="row justify-content-center">
     {% for image in site.static_files %}{% if image.path contains image_filter %}
       <div class="col-md-6" style="text-align: center; margin: 0 auto; padding-top: 20px; padding-bottom: 20px;">
-        <img src="{{ image.path }}" width="95%" style="border-radius: 5px; filter: drop-shadow(5px 5px 15px rgba(0,0,0,0.5));" />
+        <img src="{{ image.path }}" width="95%" class="drop-shadow" />
       </div>
     {% endif %}{% endfor %}
   </div>
