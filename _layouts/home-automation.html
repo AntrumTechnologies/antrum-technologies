@@ -13,7 +13,10 @@ bodyClass: "page-home-automation"
 
 <div class="strip">
   <div class="container pb-6 pb-md-10">
-    <div class="row justify-content-start">
+    {% include call.html show_button=true %}
+    <br/><br/>
+
+    <div class="row justify-content-start mb-2">
       {% for service in site.home-automation-intro %}
       <div class="col-12 col-md-6 mb-1">
         <div class="service service-summary">
@@ -28,6 +31,15 @@ bodyClass: "page-home-automation"
         </div>
       </div>
       {% endfor %}
+    </div>
+
+    {% capture image_filter %}images/home-automation{% endcapture %}
+    <div class="row justify-content-center">
+      {% for image in site.static_files %}{% if image.path contains image_filter %}{% if forloop.index < 73 %}
+        <div class="col-md-6" style="text-align: center; margin: 0 auto; padding-top: 20px; padding-bottom: 20px;">
+          <img src="{{ image.path }}" width="95%" class="drop-shadow" />
+        </div>
+      {% endif %}{% endif %}{% endfor %}
     </div>
   </div>
 </div>
