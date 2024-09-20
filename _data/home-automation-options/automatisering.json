@@ -18,5 +18,15 @@
     "icon": "fa-regular fa-blinds",
     "name": "Rolluiken & gordijnen",
     "text": "Automatiseer het openen en sluiten van uw rolluiken en gordijnen, zodra de zon schijnt of de avond valt."
+  },
+  {
+    "icon": "fa-solid fa-solar-panel",
+    "name": "Zonnepanelen",
+    "text": "Automatiseer het gebruik van andere apparaten in uw woning op basis van de zonne energie opbrengsten."
+  },
+  {
+    "icon": "fa-solid fa-vacuum",
+    "name": "Stofzuiger",
+    "text": "Laat uw robot stofzuiger het werk terwijl u niet thuis bent."
   }
 ]
