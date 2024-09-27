@@ -5,6 +5,11 @@
     "image": "images/social/linkedin.svg"
   },
   {
+    "name": "Instagram",
+    "link": "https://www.instagram.com/antrumtechnologies/",
+    "image": "images/social/instagram.svg"
+  },
+  {
     "name": "Github",
     "link": "https://github.com/AntrumTechnologies",
     "image": "images/social/github.svg"
