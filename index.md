@@ -2,7 +2,7 @@
 title: Home - Antrum Technologies
 layout: home
 description: Automatisering en software oplossingen voor thuis
-intro_image: "images/illustrations/undraw_smart_home_re_orvn.svg"
+intro_image: "images/antrum-controller.jpeg"
 intro_image_absolute: true
 intro_image_hide_on_mobile: false
 show_call_box: true
