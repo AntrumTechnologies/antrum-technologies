@@ -10,6 +10,11 @@
     "image": "images/social/instagram.svg"
   },
   {
+    "name": "Facebook",
+    "link": "https://www.facebook.com/profile.php?id=61568569556982",
+    "image": "images/social/facebook.svg"
+  },
+  {
     "name": "Github",
     "link": "https://github.com/AntrumTechnologies",
     "image": "images/social/github.svg"
