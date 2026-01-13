@@ -17,6 +17,6 @@ We gaan verder dan alleen domotica en leveren ook hoogwaardige elektronica en so
 
 ## Wie is Antrum?
 
-Wij zijn Tom, Loe & Patrick. Gepassioneerd door techniek.
+Wij zijn Tom & Patrick. Gepassioneerd door techniek.
 
-![Tom](/images/team/tom.png){: width="20%" } ![Loe](/images/team/loe.png){: width="20%" } ![Loe](/images/team/patrick.png){: width="20%" }
+![Tom](/images/team/tom.png){: width="20%" } ![Patrick](/images/team/patrick.png){: width="20%" }
