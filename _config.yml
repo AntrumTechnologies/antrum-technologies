@@ -26,7 +26,7 @@ collections:
     output: true
     sort_by: date
   team:
-    output: true
+    output: false
   home-automation:
     output: true
 
@@ -50,7 +50,14 @@ defaults:
       path: ""
       type: "home-automation"
     values:
-      layout: "home-automation-single"
+      layout: "redirect"
+      redirect_to: "/#voor-u"
+  - scope:
+      path: ""
+      type: "home-automation-intro"
+    values:
+      layout: "redirect"
+      redirect_to: "/#voor-u"
 
 sass:
   style: compressed # possible values: nested expanded compact compressed

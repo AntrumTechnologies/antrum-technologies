@@ -1,0 +1,880 @@
+<!doctype html>
+<html lang="nl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Antrum Technologies — Uw huis denkt mee</title>
+<meta name="description" content="Alles-in-1 domotica op maat met Home Assistant. Ontdek wat uw huis voor ú kan doen: verlichting, energie, beveiliging en comfort — lokaal, privé en volledig ontzorgd.">
+<link rel="icon" href="/images/favicon-32x32.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0b1033; --navy-2:#121a4a; --navy-3:#1b2563;
+  --ink:#eef0ff; --muted:#a7add6; --line:rgba(255,255,255,.09);
+  --indigo:#6f6bff; --indigo-2:#8f8cff; --amber:#ffc24b; --amber-2:#ffdd8a;
+  --green:#3ddc97; --red:#ff6b6b; --sky:#5ec8ff;
+  --paper:#f6f6fb; --paper-ink:#141838; --paper-muted:#5a5f85;
+  --r:18px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:"Plus Jakarta Sans",system-ui,sans-serif;background:var(--navy);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+a{color:inherit}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+h1,h2,h3{line-height:1.12;letter-spacing:-.02em}
+h2{font-size:clamp(30px,4.2vw,48px);font-weight:800}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--indigo-2)}
+.eyebrow::before{content:"";width:22px;height:2px;background:currentColor;border-radius:2px}
+.lead{font-size:clamp(17px,1.6vw,20px);color:var(--muted);max-width:640px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:15px 24px;border-radius:999px;font-weight:700;text-decoration:none;border:0;cursor:pointer;font:inherit;font-weight:700;transition:transform .2s,box-shadow .2s,background .2s}
+.btn-primary{background:var(--amber);color:#2a1d00;box-shadow:0 10px 30px -8px rgba(255,194,75,.55)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 16px 40px -8px rgba(255,194,75,.7)}
+.btn-ghost{background:rgba(255,255,255,.06);color:var(--ink);border:1px solid var(--line)}
+.btn-ghost:hover{background:rgba(255,255,255,.12)}
+section{padding:110px 0;position:relative}
+
+/* NAV */
+nav{position:fixed;inset:0 0 auto 0;z-index:50;transition:background .3s,backdrop-filter .3s,border-color .3s;border-bottom:1px solid transparent}
+nav.scrolled{background:rgba(11,16,51,.78);backdrop-filter:blur(14px);border-color:var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:74px}
+.logo{display:inline-flex;flex-direction:column;align-items:flex-start;text-decoration:none;line-height:1}
+.logo img{height:36px;width:auto;display:block}
+footer .logo img{height:30px}
+.navlinks{display:flex;gap:30px;align-items:center}
+.navlinks a{text-decoration:none;font-size:15px;font-weight:600;color:var(--muted);transition:color .2s}
+.navlinks a:hover{color:var(--ink)}
+.navlinks .btn{padding:10px 18px;font-size:14px;color:#2a1d00}
+@media(max-width:860px){.navlinks a:not(.btn){display:none}}
+@media(max-width:600px){
+  section{padding:80px 0}
+  h2 br{display:none}
+  .hero h1{font-size:40px}
+  .navlinks .btn{padding:9px 14px;font-size:13px}
+  .clock{font-size:18px;top:10px;left:10px}
+  .hud{top:10px;right:10px;gap:4px}.chip{font-size:10px;padding:3px 8px}
+  .tiles b{font-size:16px}
+  .sentence{font-size:20px}
+}
+
+/* HERO */
+.hero{min-height:100vh;display:flex;align-items:center;padding:130px 0 80px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:900px;height:900px;background:radial-gradient(circle,rgba(111,107,255,.35),transparent 60%);pointer-events:none}
+.hero::after{content:"";position:absolute;left:-200px;bottom:-300px;width:700px;height:700px;background:radial-gradient(circle,rgba(255,194,75,.14),transparent 60%);pointer-events:none}
+.hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center;position:relative;z-index:1}
+.hero h1{font-size:clamp(42px,6.2vw,80px);font-weight:800;margin:18px 0 22px}
+.hero h1 em{font-style:normal;background:linear-gradient(90deg,var(--amber),#ff9d5c);-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px}
+.trust{display:flex;gap:26px;margin-top:44px;flex-wrap:wrap;color:var(--muted);font-size:14px}
+.trust div{display:flex;align-items:center;gap:8px}
+.trust svg{color:var(--green)}
+@media(max-width:960px){.hero-grid{grid-template-columns:1fr}.hero{min-height:auto}}
+
+/* live feed */
+.feed{background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.02));border:1px solid var(--line);border-radius:28px;padding:22px;box-shadow:0 40px 80px -30px rgba(0,0,0,.6);backdrop-filter:blur(6px)}
+.feed-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.feed-head b{font-size:15px}
+.live{display:inline-flex;align-items:center;gap:7px;font-size:12px;font-weight:700;color:var(--green);letter-spacing:.08em}
+.live i{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 0 0 rgba(61,220,151,.7);animation:pulse 1.8s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 10px rgba(61,220,151,0)}100%{box-shadow:0 0 0 0 rgba(61,220,151,0)}}
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.tile{background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:12px}
+.tile small{display:block;font-size:11.5px;color:var(--muted)}
+.tile b{font-size:20px;font-weight:800}
+.tile b.g{color:var(--green)} .tile b.a{color:var(--amber)} .tile b.s{color:var(--sky)}
+.events{display:flex;flex-direction:column;gap:9px;height:282px;overflow:hidden;position:relative}
+.events::after{content:"";position:absolute;inset:auto 0 0 0;height:60px;background:linear-gradient(transparent,rgba(18,24,70,.95));pointer-events:none}
+.ev{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,.05);border:1px solid var(--line);border-radius:14px;padding:11px 13px;animation:evIn .6s cubic-bezier(.2,.9,.3,1.2)}
+@keyframes evIn{from{opacity:0;transform:translateY(-14px) scale(.97)}to{opacity:1;transform:none}}
+.ev .ic{flex:0 0 34px;height:34px;border-radius:10px;display:grid;place-items:center;font-size:17px;background:rgba(111,107,255,.18)}
+.ev p{font-size:13.5px;line-height:1.4}
+.ev p b{display:block;font-size:14px}
+.ev time{margin-left:auto;font-size:11.5px;color:var(--muted);font-family:"JetBrains Mono",monospace;white-space:nowrap}
+
+/* STRIP */
+.strip{padding:34px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:rgba(255,255,255,.02)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+.strip b{display:block;font-size:34px;font-weight:800;background:linear-gradient(90deg,#fff,var(--indigo-2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.strip span{font-size:14px;color:var(--muted)}
+@media(max-width:700px){.strip .wrap{grid-template-columns:repeat(2,1fr)}}
+
+/* DAY */
+.day-grid{display:grid;grid-template-columns:1.25fr .75fr;gap:34px;margin-top:50px;align-items:start}
+@media(max-width:960px){.day-grid{grid-template-columns:1fr}}
+.house-card{border-radius:28px;overflow:hidden;border:1px solid var(--line);background:var(--navy-2);position:relative}
+#house{display:block;width:100%;height:auto}
+#house .win{transition:fill .9s, filter .9s}
+#house .blind{transition:height 1.2s ease}
+#house .glow{filter:url(#glow)}
+.clock{position:absolute;top:16px;left:18px;font-family:"JetBrains Mono",monospace;font-size:28px;font-weight:500;background:rgba(0,0,0,.28);padding:4px 12px;border-radius:12px;backdrop-filter:blur(6px)}
+.hud{position:absolute;top:16px;right:16px;display:flex;flex-direction:column;gap:6px;align-items:flex-end}
+.chip{font-size:12px;font-weight:700;padding:5px 10px;border-radius:999px;background:rgba(0,0,0,.35);backdrop-filter:blur(6px);display:inline-flex;gap:6px;align-items:center;transition:opacity .4s}
+.chip.off{opacity:.35}
+.controls{display:flex;align-items:center;gap:14px;padding:18px 20px;border-top:1px solid var(--line)}
+.play{flex:0 0 46px;height:46px;border-radius:50%;border:0;background:var(--amber);color:#2a1d00;cursor:pointer;display:grid;place-items:center}
+.track{flex:1;position:relative}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:6px;border-radius:6px;background:linear-gradient(90deg,#1a2a6b,#5ec8ff 30%,#ffd27a 55%,#ff8a5c 75%,#1a2060);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:#fff;border:4px solid var(--indigo);cursor:grab}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:#fff;border:4px solid var(--indigo);cursor:grab}
+.ticks{display:flex;justify-content:space-between;font-size:11px;color:var(--muted);margin-top:8px;font-family:"JetBrains Mono",monospace}
+.story{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:24px;padding:28px;min-height:100%}
+.story .t{font-family:"JetBrains Mono",monospace;color:var(--amber);font-size:14px}
+.story h3{font-size:26px;margin:8px 0 12px}
+.story p{color:var(--muted)}
+.story ul{list-style:none;margin-top:20px;display:flex;flex-direction:column;gap:10px}
+.story li{display:flex;gap:10px;font-size:14.5px;align-items:flex-start}
+.story li::before{content:"";flex:0 0 8px;height:8px;margin-top:8px;border-radius:50%;background:var(--indigo-2)}
+.story .how{margin-top:22px;padding:14px 16px;border-radius:14px;background:rgba(111,107,255,.12);font-size:13.5px;color:#cfd0ff}
+.story .how b{color:#fff}
+.dots{display:flex;gap:6px;margin-top:22px;flex-wrap:wrap}
+.dots button{width:30px;height:6px;border-radius:6px;border:0;background:rgba(255,255,255,.15);cursor:pointer;transition:background .3s}
+.dots button.on{background:var(--amber)}
+
+/* PERSONAS (light) */
+.light{background:var(--paper);color:var(--paper-ink)}
+.light .lead{color:var(--paper-muted)}
+.light .eyebrow{color:var(--indigo)}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:40px 0 30px}
+.tab{border:1px solid #dcdcee;background:#fff;color:var(--paper-ink);padding:12px 18px;border-radius:999px;font:inherit;font-weight:700;font-size:15px;cursor:pointer;display:flex;gap:8px;align-items:center;transition:all .2s}
+.tab:hover{border-color:var(--indigo)}
+.tab.on{background:var(--paper-ink);color:#fff;border-color:var(--paper-ink)}
+.p-panel{display:grid;grid-template-columns:.8fr 1.2fr;gap:30px;align-items:start}
+@media(max-width:900px){.p-panel{grid-template-columns:1fr}}
+.p-intro{background:linear-gradient(160deg,var(--navy-2),var(--navy));color:var(--ink);border-radius:26px;padding:34px;position:sticky;top:100px}
+.p-intro .big{font-size:56px}
+.p-intro h3{font-size:30px;margin:14px 0 12px}
+.p-intro p{color:var(--muted)}
+.p-intro .save{margin-top:24px;padding-top:20px;border-top:1px solid var(--line);display:flex;gap:24px}
+.p-intro .save b{display:block;font-size:24px;color:var(--amber)}
+.p-intro .save span{font-size:13px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:600px){.cards{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid #e6e6f2;border-radius:20px;padding:22px;transition:transform .25s,box-shadow .25s;animation:cardIn .5s both}
+.card:hover{transform:translateY(-4px);box-shadow:0 20px 40px -20px rgba(20,24,56,.25)}
+@keyframes cardIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:none}}
+.card .ic{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:22px;background:#efeefe;margin-bottom:14px}
+.card h4{font-size:17px;margin-bottom:6px;line-height:1.3}
+.card p{font-size:14.5px;color:var(--paper-muted)}
+.card .flow{margin-top:14px;display:flex;flex-wrap:wrap;gap:6px;font-size:11.5px;font-weight:700}
+.card .flow span{padding:4px 9px;border-radius:999px;background:#f1f1f8;color:#4a4f7a}
+.card .flow span.w{background:#fff4dc;color:#8a5a00}
+.card .flow span.d{background:#e2f7ee;color:#11714a}
+
+/* BUILDER */
+.builder{margin-top:50px;background:linear-gradient(160deg,rgba(111,107,255,.16),rgba(255,255,255,.03));border:1px solid var(--line);border-radius:30px;padding:clamp(22px,4vw,44px)}
+.sentence{font-size:clamp(22px,3vw,36px);font-weight:700;line-height:1.55}
+.sentence .kw{color:var(--muted);font-weight:600}
+.pick{position:relative;display:inline-block}
+.pick select{text-overflow:ellipsis;appearance:none;-webkit-appearance:none;font:inherit;font-weight:800;color:var(--amber);background:rgba(255,194,75,.1);border:0;border-bottom:3px dashed rgba(255,194,75,.6);padding:0 6px;border-radius:8px 8px 0 0;cursor:pointer;max-width:100%;white-space:normal}
+.pick select.c{color:var(--sky);background:rgba(94,200,255,.1);border-color:rgba(94,200,255,.6)}
+.pick select.d{color:var(--green);background:rgba(61,220,151,.1);border-color:rgba(61,220,151,.6)}
+.pick select option{color:#111;background:#fff;font-size:16px}
+.b-foot{display:flex;flex-wrap:wrap;gap:16px;align-items:center;justify-content:space-between;margin-top:34px;padding-top:26px;border-top:1px solid var(--line)}
+.verdict{display:flex;gap:14px;align-items:center}
+.verdict .ok{width:46px;height:46px;border-radius:50%;background:rgba(61,220,151,.15);color:var(--green);display:grid;place-items:center;font-size:22px;font-weight:800}
+.verdict p{font-size:15px;color:var(--muted)}
+.verdict p b{color:#fff;display:block;font-size:17px}
+pre.yaml{margin-top:26px;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:16px;padding:18px 20px;font-family:"JetBrains Mono",monospace;font-size:13px;color:#c9cbf5;overflow-x:auto;line-height:1.7}
+pre.yaml .k{color:var(--indigo-2)} pre.yaml .v{color:var(--amber-2)} pre.yaml .cm{color:#6f75a8}
+.toggle-yaml{background:none;border:0;color:var(--muted);font:inherit;font-size:14px;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
+
+/* WHY */
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
+@media(max-width:900px){.why{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.why{grid-template-columns:1fr}}
+.why div{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:22px;padding:28px}
+.why .n{font-size:30px;margin-bottom:12px}
+.why h3{font-size:19px;margin-bottom:8px}
+.why p{color:var(--muted);font-size:15px}
+
+
+/* PRODUCTS */
+.gallery{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:230px;gap:16px;margin-top:50px}
+.shot{position:relative;border-radius:22px;overflow:hidden;background:#dfe0ee;margin:0}
+.shot.big{grid-column:span 2;grid-row:span 2}
+.shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s}
+.shot:hover img{transform:scale(1.04)}
+.shot figcaption{position:absolute;inset:auto 0 0 0;padding:44px 18px 16px;background:linear-gradient(transparent,rgba(8,12,40,.88));color:#fff}
+.shot figcaption b{display:block;font-size:16px}
+.shot figcaption span{font-size:13.5px;color:#cfd2f2;line-height:1.4;display:block}
+.shot.big figcaption{padding:70px 26px 24px}
+.shot.big figcaption b{font-size:24px}
+.shot.big figcaption span{font-size:15px;max-width:440px}
+.shot .tag{position:absolute;top:14px;left:14px;font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:5px 10px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--paper-ink)}
+@media(max-width:900px){.gallery{grid-template-columns:1fr 1fr;grid-auto-rows:200px}}
+@media(max-width:560px){.gallery{grid-template-columns:1fr}.shot.big{grid-column:auto;grid-row:span 2}}
+.brands{display:flex;align-items:center;gap:40px;flex-wrap:wrap;margin-top:44px;padding-top:30px;border-top:1px solid #e1e1ee}
+.brands span{font-size:14px;color:var(--paper-muted);font-weight:600}
+.brands img{height:30px;width:auto;opacity:.8;filter:grayscale(1);transition:all .3s}
+.brands img:hover{opacity:1;filter:none}
+
+/* TESTIMONIALS */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:50px}
+@media(max-width:900px){.quotes{grid-template-columns:1fr}}
+.quote{background:rgba(255,255,255,.04);border:1px solid var(--line);border-radius:24px;padding:30px;display:flex;flex-direction:column}
+.quote .tagline{font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.quote p{font-size:17px;line-height:1.6;margin:14px 0 26px;flex:1}
+.quote p::before{content:"“";display:block;font-size:54px;line-height:.5;color:var(--indigo-2);margin-bottom:10px}
+.who{display:flex;gap:14px;align-items:center}
+.face{position:relative;width:54px;height:54px;border-radius:50%;flex:0 0 54px;background:linear-gradient(140deg,var(--indigo),var(--navy-3));display:grid;place-items:center;font-weight:800;font-size:20px;overflow:hidden}
+.face img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.who b{display:block}
+.who span{font-size:13.5px;color:var(--muted)}
+
+/* STEPS */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:50px;counter-reset:s}
+@media(max-width:900px){.steps{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.steps{grid-template-columns:1fr}}
+.step{background:#fff;border:1px solid #e6e6f2;border-radius:22px;padding:28px;position:relative}
+.step::before{counter-increment:s;content:"0" counter(s);font-family:"JetBrains Mono",monospace;font-weight:500;font-size:14px;color:var(--indigo)}
+.step h3{font-size:20px;margin:10px 0 8px}
+.step p{color:var(--paper-muted);font-size:15px}
+
+/* TEAM / QUOTE */
+.team{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:center}
+@media(max-width:860px){.team{grid-template-columns:1fr}}
+.avatars{display:flex;gap:18px}
+.av{flex:1;border-radius:24px;background:linear-gradient(160deg,var(--navy-3),var(--navy-2));border:1px solid var(--line);display:flex;flex-direction:column;align-items:center;text-align:center;padding:28px 20px 24px}
+.av img{width:100%;max-width:220px;aspect-ratio:1;border-radius:50%;object-fit:cover;margin-bottom:18px;box-shadow:0 0 0 6px rgba(111,107,255,.18),0 20px 40px -16px rgba(0,0,0,.6)}
+.av b{font-size:20px}
+.av span{font-size:13px;color:var(--muted)}
+blockquote{font-size:clamp(20px,2.2vw,26px);font-weight:600;line-height:1.45;margin:22px 0}
+blockquote::before{content:"“";display:block;font-size:70px;line-height:.6;color:var(--amber)}
+
+/* FAQ */
+.faq{max-width:820px;margin:44px auto 0}
+details{border-bottom:1px solid #e1e1ee;padding:22px 0}
+summary{font-weight:700;font-size:18px;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:20px}
+summary::after{content:"+";font-size:24px;line-height:1;color:var(--indigo);transition:transform .3s}
+details[open] summary::after{transform:rotate(45deg)}
+details p{color:var(--paper-muted);margin-top:12px}
+
+/* CTA */
+.cta-box{border-radius:34px;padding:clamp(28px,5vw,64px);background:radial-gradient(circle at 85% 10%,rgba(255,194,75,.25),transparent 45%),linear-gradient(140deg,var(--navy-3),var(--navy-2));border:1px solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:44px}
+@media(max-width:900px){.cta-box{grid-template-columns:1fr}}
+form{display:grid;gap:12px}
+form .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:520px){form .row{grid-template-columns:1fr}}
+input,textarea{font:inherit;width:100%;padding:14px 16px;border-radius:14px;border:1px solid var(--line);background:rgba(0,0,0,.25);color:var(--ink);outline:none;transition:border-color .2s}
+input:focus,textarea:focus{border-color:var(--indigo-2)}
+input::placeholder,textarea::placeholder{color:#7e84b3}
+.interest{display:flex;flex-wrap:wrap;gap:8px}
+.interest label{cursor:pointer}
+.interest input{display:none}
+.interest span{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:600;color:var(--muted);transition:all .2s}
+.interest input:checked+span{background:var(--amber);color:#2a1d00;border-color:var(--amber)}
+
+footer{padding:50px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
+footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
+footer a{text-decoration:none}
+footer a:hover{color:#fff}
+
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .8s,transform .8s}
+.reveal.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
+</style>
+<!-- Analytics (zoals op de vorige site) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-4N3L3J6GJK"></script>
+<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());gtag('config','G-4N3L3J6GJK');</script>
+<script async src="https://static.klaviyo.com/onsite/js/klaviyo.js?company_id=Uq3xdV"></script>
+<script>
+// Flyer "alles-in-1": QR-codes zonder utm_source krijgen dezelfde campagnetags als voorheen
+(function(){var q=new URLSearchParams(location.search);
+  if(!q.get('utm_source')&&q.get('utm_medium')==='flyer'&&q.get('utm_campaign')==='allesin1'){
+    location.replace('/?utm_source=flyerallesin1&utm_medium=flyer&utm_campaign=allesin1&utm_content='+encodeURIComponent(q.get('utm_content')||'')+'#voor-u');}})();
+</script>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><img src="/images/logo/antrum-logo-white.svg?v=2" alt="Antrum Technologies"></a>
+    <div class="navlinks">
+      <a href="#dag">Een dag thuis</a>
+      <a href="#voor-u">Voor u</a>
+      <a href="#bouwer">Probeer het</a>
+      <a href="#praktijk">Praktijk</a>
+      <a href="#werkwijze">Werkwijze</a>
+      <a href="/blog/">Blog</a>
+      <a class="btn btn-primary" href="#contact">Plan een huisscan</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero" id="top">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow">Alles-in-1 domotica op maat</span>
+      <h1>Een huis dat <em>meedenkt,</em> zodat u het niet hoeft te doen.</h1>
+      <p class="lead">Verlichting, verwarming, zonnepanelen, camera's, alarm, de wasmachine en de laadpaal. Wij laten ze samenwerken met één slim brein, helemaal afgestemd op hoe ú leeft.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#dag">Beleef een dag in een slim huis →</a>
+        <a class="btn btn-ghost" href="#contact">Gratis kennismaking</a>
+      </div>
+      <div class="trust">
+        <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>Werkt zonder internet</div>
+        <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>Uw data blijft thuis</div>
+        <div><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M5 12l5 5L20 7"/></svg>Onderhoud inbegrepen</div>
+      </div>
+    </div>
+    <div class="feed" aria-label="Voorbeeld van live meldingen uit een Antrum-huis">
+      <div class="feed-head"><b>Thuis</b><span class="live"><i></i>LIVE</span></div>
+      <div class="tiles">
+        <div class="tile"><small>Zonnepanelen</small><b class="a" id="t-solar">3,4 kW</b></div>
+        <div class="tile"><small>Stroomprijs nu</small><b class="g" id="t-price">€0,08</b></div>
+        <div class="tile"><small>Woonkamer</small><b class="s" id="t-temp">20,5°</b></div>
+      </div>
+      <div class="events" id="events"></div>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div><b>2.000+</b><span>merken en apparaten koppelbaar</span></div>
+    <div><b>100%</b><span>lokaal, geen cloud nodig</span></div>
+    <div><b>1</b><span>app voor álles in huis</span></div>
+    <div><b>∞</b><span>automatiseringen mogelijk</span></div>
+  </div>
+</div>
+
+<!-- DAY -->
+<section id="dag">
+  <div class="wrap">
+    <span class="eyebrow reveal">Een dag in een Antrum-huis</span>
+    <h2 class="reveal" style="margin:14px 0 16px">Sleep door de dag en zie <br>wat uw huis voor u regelt.</h2>
+    <p class="lead reveal">Geen knoppen, geen apps openen. Het gebeurt gewoon, op het juiste moment. Druk op play of sleep de tijdlijn.</p>
+
+    <div class="day-grid">
+      <div class="house-card reveal">
+        <div class="clock" id="clock">06:45</div>
+        <div class="hud">
+          <span class="chip" id="c-alarm">🛡️ Alarm</span>
+          <span class="chip" id="c-solar">☀️ Zonnestroom</span>
+          <span class="chip" id="c-ev">🔌 Auto laadt</span>
+          <span class="chip" id="c-temp">🌡️ 20°</span>
+        </div>
+        <svg id="house" viewBox="0 0 640 430" role="img" aria-label="Doorsnede van een huis waarvan de verlichting, zonwering en apparaten mee veranderen met de tijd">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+              <stop id="sky1" offset="0" stop-color="#0d1446"/>
+              <stop id="sky2" offset="1" stop-color="#27306f"/>
+            </linearGradient>
+            <filter id="glow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <radialGradient id="sunG"><stop offset="0" stop-color="#fff6c8"/><stop offset=".5" stop-color="#ffd25a"/><stop offset="1" stop-color="#ffb43a" stop-opacity="0"/></radialGradient>
+          </defs>
+          <rect width="640" height="430" fill="url(#sky)"/>
+          <g id="stars" fill="#fff" opacity="0" style="transition:opacity 1s">
+            <circle cx="60" cy="40" r="1.4"/><circle cx="150" cy="80" r="1"/><circle cx="240" cy="30" r="1.3"/><circle cx="420" cy="50" r="1"/><circle cx="520" cy="25" r="1.5"/><circle cx="590" cy="90" r="1"/><circle cx="350" cy="18" r="1"/>
+          </g>
+          <g id="sun" style="transition:transform 1.2s ease"><circle r="38" fill="url(#sunG)"/><circle r="15" fill="#fff3c4"/></g>
+          <g id="moon" style="transition:opacity 1s"><circle cx="560" cy="70" r="16" fill="#f3f0dc"/><circle cx="567" cy="64" r="14" fill="url(#sky)"/></g>
+          <!-- ground -->
+          <rect y="372" width="640" height="58" fill="#16204f"/>
+          <rect y="372" width="640" height="5" fill="#2a3a7a"/>
+          <!-- tree + garden light -->
+          <g transform="translate(55,0)">
+            <rect x="-5" y="300" width="10" height="72" fill="#3a2d4a"/>
+            <circle cx="0" cy="285" r="38" fill="#1f4a55"/><circle cx="-18" cy="300" r="24" fill="#22545e"/><circle cx="18" cy="298" r="24" fill="#1c4450"/>
+          </g>
+          <rect x="102" y="340" width="4" height="32" fill="#555c8a"/>
+          <circle id="gardenLight" cx="104" cy="338" r="6" class="win" fill="#2a3168"/>
+          <!-- sprinkler -->
+          <g id="sprinkler" opacity="0" style="transition:opacity .8s"><path d="M80 372 q-14 -26 -30 -10 M80 372 q14 -26 30 -10 M80 372 v-30" stroke="#7fd6ff" stroke-width="2" fill="none" stroke-dasharray="3 4"/></g>
+          <!-- house -->
+          <polygon points="120,170 300,62 480,170" fill="#232c6a"/>
+          <polygon id="panels" points="318,92 452,172 412,172 288,98" fill="#1d3a7c" stroke="#5c7fd1" stroke-width="1.5" style="transition:fill .8s"/>
+          <g stroke="#5c7fd1" stroke-width="1" opacity=".7"><line x1="303" y1="95" x2="432" y2="172"/><line x1="335" y1="102" x2="315" y2="114"/><line x1="368" y1="122" x2="348" y2="134"/><line x1="402" y1="142" x2="382" y2="154"/></g>
+          <rect x="138" y="170" width="324" height="202" fill="#1a2158"/>
+          <line x1="138" y1="272" x2="462" y2="272" stroke="#2f3a86" stroke-width="4"/>
+          <line x1="300" y1="170" x2="300" y2="272" stroke="#2f3a86" stroke-width="3"/>
+          <line x1="330" y1="272" x2="330" y2="372" stroke="#2f3a86" stroke-width="3"/>
+          <!-- windows -->
+          <rect id="w-bed" class="win" x="170" y="190" width="100" height="60" rx="4"/>
+          <rect class="blind" id="b-bed" x="170" y="190" width="100" height="0" fill="#3a4592" opacity=".88"/>
+          <rect id="w-kid" class="win" x="332" y="190" width="100" height="60" rx="4"/>
+          <rect class="blind" id="b-kid" x="332" y="190" width="100" height="0" fill="#3a4592" opacity=".88"/>
+          <rect id="w-living" class="win" x="160" y="292" width="146" height="62" rx="4"/>
+          <rect class="blind" id="b-living" x="160" y="292" width="146" height="0" fill="#3a4592" opacity=".88"/>
+          <rect id="w-kitchen" class="win" x="352" y="292" width="88" height="62" rx="4"/>
+          <rect class="blind" id="b-kitchen" x="352" y="292" width="88" height="0" fill="#3a4592" opacity=".88"/>
+          <g stroke="#1a2158" stroke-width="3"><line x1="220" y1="190" x2="220" y2="250"/><line x1="382" y1="190" x2="382" y2="250"/><line x1="233" y1="292" x2="233" y2="354"/><line x1="396" y1="292" x2="396" y2="354"/></g>
+          <!-- tv glow -->
+          <rect id="tv" x="176" y="330" width="40" height="18" rx="2" fill="#0a0f30" style="transition:fill .6s"/>
+          <!-- room labels -->
+          <g font-family="Plus Jakarta Sans" font-size="10" font-weight="700" fill="#8d93c9" letter-spacing="1">
+            <text x="150" y="186">SLAAPKAMER</text><text x="312" y="186">KINDERKAMER</text><text x="150" y="288">WOONKAMER</text><text x="342" y="288">KEUKEN</text>
+          </g>
+          <!-- vacuum -->
+          <g id="robot" style="transition:transform 6s linear"><ellipse cx="250" cy="368" rx="13" ry="4" fill="#9aa3e8"/><circle cx="250" cy="366" r="2" fill="#3ddc97"/></g>
+          <!-- carport -->
+          <polygon points="478,262 600,262 600,268 478,268" fill="#2a3478"/>
+          <rect x="594" y="268" width="5" height="104" fill="#2a3478"/>
+          <g transform="translate(492,330)">
+            <path d="M0 30 q2 -18 18 -20 l14 -14 h34 l16 14 q16 2 16 20 z" fill="#5d66b8"/>
+            <rect x="34" y="0" width="26" height="12" rx="2" fill="#9fb3ff" opacity=".5"/>
+            <circle cx="22" cy="32" r="9" fill="#0b1033"/><circle cx="76" cy="32" r="9" fill="#0b1033"/>
+          </g>
+          <rect x="474" y="318" width="10" height="54" rx="2" fill="#3b4596"/>
+          <circle id="evLed" cx="479" cy="327" r="3" fill="#555c8a" style="transition:fill .5s"/>
+          <path id="evCable" d="M479 340 q10 22 20 6" stroke="#555c8a" stroke-width="2.5" fill="none" style="transition:stroke .5s"/>
+          <!-- door -->
+          <rect x="306" y="320" width="20" height="52" fill="#11173f"/>
+          <circle id="doorLed" cx="321" cy="348" r="2" fill="#ff6b6b" style="transition:fill .5s"/>
+          <!-- notification bubble -->
+          <g id="bubble" opacity="0" style="transition:opacity .5s">
+            <rect x="380" y="10" width="0" height="0"/>
+          </g>
+        </svg>
+        <div class="controls">
+          <button class="play" id="play" aria-label="Afspelen"><svg id="pi" width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M7 4v16l13-8z"/></svg></button>
+          <div class="track">
+            <input type="range" id="slider" min="0" max="10" step="1" value="0" aria-label="Tijdstip van de dag">
+            <div class="ticks"><span>06:00</span><span>12:00</span><span>18:00</span><span>00:00</span><span>03:00</span></div>
+          </div>
+        </div>
+      </div>
+      <aside class="story reveal" id="story" aria-live="polite"></aside>
+    </div>
+  </div>
+</section>
+
+<!-- PERSONAS -->
+<section class="light" id="voor-u">
+  <div class="wrap">
+    <span class="eyebrow reveal">Wat zou uw huis voor ú doen?</span>
+    <h2 class="reveal" style="margin:14px 0 16px">Ieder huis is anders. <br>Daarom maken we het op maat.</h2>
+    <p class="lead reveal">Kies wat het beste bij u past en ontdek een greep uit wat er kan. Wij combineren het tot één systeem dat precies doet wat ú wilt.</p>
+    <div class="tabs" id="tabs" role="tablist"></div>
+    <div class="p-panel">
+      <div class="p-intro" id="p-intro"></div>
+      <div class="cards" id="cards"></div>
+    </div>
+  </div>
+</section>
+
+<!-- BUILDER -->
+<section id="bouwer">
+  <div class="wrap">
+    <span class="eyebrow reveal">Probeer het zelf</span>
+    <h2 class="reveal" style="margin:14px 0 16px">Bedenk het maar. <br>Grote kans dat het kan.</h2>
+    <p class="lead reveal">Elke automatisering bestaat uit drie delen: <b style="color:var(--amber)">wanneer</b>, <b style="color:var(--sky)">onder welke voorwaarde</b> en <b style="color:var(--green)">wat er moet gebeuren</b>. Kies eerst het moment, daarna de rest.</p>
+    <div class="builder reveal">
+      <div class="sentence">
+        <span class="kw">Als</span> <span class="pick"><select id="s-when" aria-label="Wanneer"></select></span>
+        <span class="pick"><select id="s-cond" class="c" aria-label="Voorwaarde"></select></span><span class="kw">,</span>
+        <span class="kw">dan</span> <span class="pick"><select id="s-do" class="d" aria-label="Actie"></select></span><span class="kw">.</span>
+      </div>
+      <div class="b-foot">
+        <div class="verdict"><div class="ok">✓</div><p><b id="v-title">Ja, dat kan.</b><span id="v-text"></span></p></div>
+        <div style="display:flex;gap:12px;flex-wrap:wrap">
+          <button class="btn btn-ghost" id="shuffle">🎲 Verras me</button>
+          <a class="btn btn-primary" href="#contact" id="want">Dit wil ik ook →</a>
+        </div>
+      </div>
+      <div style="margin-top:20px"><button class="toggle-yaml" id="ty">Bekijk hoe dit er onder de motorkap uitziet</button></div>
+      <pre class="yaml" id="yaml" hidden></pre>
+    </div>
+  </div>
+</section>
+
+<!-- WHY -->
+<section style="padding-top:40px">
+  <div class="wrap">
+    <span class="eyebrow reveal">Waarom Antrum</span>
+    <h2 class="reveal" style="margin:14px 0 0">Slim, zonder gedoe.</h2>
+    <div class="why">
+      <div class="reveal"><div class="n">🏠</div><h3>Lokaal en privé</h3><p>Uw systeem draait op een eigen server in uw meterkast, met Home Assistant. Valt het internet weg, dan werkt alles gewoon door. Uw camerabeelden en gegevens blijven thuis.</p></div>
+      <div class="reveal"><div class="n">🔗</div><h3>Alle merken, één app</h3><p>Philips Hue, Somfy, uw slimme meter, laadpaal, warmtepomp, Sonos of camera's: we koppelen wat u al heeft en vullen aan waar nodig. U zit nergens aan vast.</p></div>
+      <div class="reveal"><div class="n">🧩</div><h3>Volledig modulair</h3><p>Begin met verlichting of energie en breid later uit met beveiliging, zonwering of klimaat. Het systeem groeit met u mee.</p></div>
+      <div class="reveal"><div class="n">🛠️</div><h3>Wij ontzorgen volledig</h3><p>Advies, installatie, programmeren en onderhoud. Updates en storingen zijn voor onze rekening, zodat u alleen de voordelen merkt.</p></div>
+      <div class="reveal"><div class="n">⚡</div><h3>Verdient zichzelf terug</h3><p>Apparaten draaien als de stroom goedkoop is of de zon schijnt, de verwarming staat niet onnodig aan en sluipverbruik wordt zichtbaar.</p></div>
+      <div class="reveal"><div class="n">👋</div><h3>Eén vast aanspreekpunt</h3><p>Geen callcenter. U belt gewoon met degene die uw huis heeft ingericht en het systeem door en door kent.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRODUCTS -->
+<section class="light" id="praktijk">
+  <div class="wrap">
+    <span class="eyebrow reveal">Uit de praktijk</span>
+    <h2 class="reveal" style="margin:14px 0 16px">Zo ziet het eruit <br>bij onze klanten thuis.</h2>
+    <p class="lead reveal">Geen kabelspaghetti of opvallende kastjes. Gewoon degelijke hardware, netjes weggewerkt, die jarenlang zijn werk doet.</p>
+    <div class="gallery">
+      <figure class="shot big reveal"><span class="tag">Het brein</span><img src="/images/home-automation/automatisering/AntrumController.jpeg" alt="De Antrum Core in een meterkast" loading="lazy"><figcaption><b>De Antrum Core</b><span>Hangt in uw meterkast en stuurt alles aan met Home Assistant. Lokaal, dus snel en privé, ook zonder internet.</span></figcaption></figure>
+      <figure class="shot reveal"><span class="tag">Energie</span><img src="/images/home-automation/energie/p1meter.jpeg" alt="Uitlezer op de slimme meter" loading="lazy"><figcaption><b>Slimme meter uitlezen</b><span>Realtime verbruik en teruglevering.</span></figcaption></figure>
+      <figure class="shot reveal"><span class="tag">Automatisering</span><img src="/images/home-automation/automatisering/bewegingssensor.jpeg" alt="Bewegingssensor aan het plafond" loading="lazy"><figcaption><b>Bewegingssensoren</b><span>Licht en alarm reageren op wie er is.</span></figcaption></figure>
+      <figure class="shot reveal"><span class="tag">Beveiliging</span><img src="/images/home-automation/automatisering/keypad.jpeg" alt="Alarm-keypad naast de achterdeur" loading="lazy"><figcaption><b>Alarm-keypad</b><span>In- en uitschakelen met code of tag.</span></figcaption></figure>
+      <figure class="shot reveal"><span class="tag">Beveiliging</span><img src="/images/home-automation/beveiliging/camera1.jpeg" alt="Buitencamera onder de dakgoot" loading="lazy"><figcaption><b>Buitencamera's</b><span>Persoonsherkenning, beelden blijven thuis.</span></figcaption></figure>
+    </div>
+    <div class="brands reveal">
+      <span>We werken onder andere met</span>
+      <img src="/images/aqara-logo-blue.png" alt="Aqara" loading="lazy">
+      <img src="/images/frient-logo.png" alt="frient" loading="lazy">
+      <img src="/images/elm-it-logo.png" alt="ELM-IT" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<!-- LET OP: conceptteksten. Vervang door de echte woorden van Frans, Eric en Paul en vraag hun toestemming voor publicatie.
+     Klantfoto's: zet /images/klanten/frans.jpg, eric.jpg en paul.jpg neer, dan verschijnen ze automatisch in plaats van de initialen. -->
+<section id="klanten">
+  <div class="wrap">
+    <span class="eyebrow reveal">Wat klanten zeggen</span>
+    <h2 class="reveal" style="margin:14px 0 0">Ervaringen van <br>onze klanten.</h2>
+    <div class="quotes">
+      <div class="quote reveal"><span class="tagline">Automatisering & camera's</span><p>Ik had losse lampen en geen camera. Nu zit alles in één app en regelt het huis het meeste zelf. Tom en Patrick hebben het netjes afgeleverd.</p><div class="who"><div class="face">F<img src="/images/klanten/frans.jpg" alt="Frans" onerror="this.remove()"></div><div><b>Frans</b><span>Nijmegen</span></div></div></div>
+      <div class="quote reveal"><span class="tagline">Energie</span><p>Sinds de slimme meter en de zonnepanelen gekoppeld zijn, draaien de boiler en de vaatwasser op eigen stroom. Ik zie precies waar mijn energie naartoe gaat.</p><div class="who"><div class="face">E<img src="/images/klanten/eric.jpg" alt="Eric" onerror="this.remove()"></div><div><b>Eric</b><span>Roermond</span></div></div></div>
+      <div class="quote reveal"><span class="tagline">Beveiliging</span><p>Het alarm met keypad werkt perfect samen met de camera's. Op vakantie krijg ik alleen een melding als het echt nodig is, en dat geeft rust.</p><div class="who"><div class="face">P<img src="/images/klanten/paul.jpg" alt="Paul" onerror="this.remove()"></div><div><b>Paul</b><span>Woerden</span></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STEPS -->
+<section class="light" id="werkwijze">
+  <div class="wrap">
+    <span class="eyebrow reveal">Werkwijze</span>
+    <h2 class="reveal" style="margin:14px 0 0">Van idee naar slim huis in vier stappen.</h2>
+    <div class="steps">
+      <div class="step reveal"><h3>Kennismaking</h3><p>We komen langs voor een gratis huisscan: wat heeft u al, wat ergert u, waar droomt u van?</p></div>
+      <div class="step reveal"><h3>Ontwerp op maat</h3><p>U krijgt een helder voorstel met de automatiseringen en apparatuur die bij uw huis en budget passen.</p></div>
+      <div class="step reveal"><h3>Installatie</h3><p>Wij plaatsen de server, sensoren en schakelaars, koppelen alles en richten uw dashboard in.</p></div>
+      <div class="step reveal"><h3>Doorontwikkelen</h3><p>Na een paar weken stemmen we samen bij. Nieuw idee? We bouwen het erbij. Onderhoud zit erin.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TEAM -->
+<section id="team">
+  <div class="wrap team">
+    <div class="avatars reveal">
+      <div class="av"><img src="/images/team/tom.png" alt="Tom van Antrum Technologies" loading="lazy"><b>Tom</b><span>Hardware & automatisering</span></div>
+      <div class="av"><img src="/images/team/patrick.png" alt="Patrick van Antrum Technologies" loading="lazy"><b>Patrick</b><span>Software & automatisering</span></div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">Wie is Antrum?</span>
+      <blockquote>We bouwen in onze eigen huizen al jaren de gekste dingen met Home Assistant. Dat plezier en gemak gunnen we iedereen, zonder dat u er zelf een technicus voor hoeft te zijn.</blockquote>
+      <p class="lead">Wij zijn Tom & Patrick, gepassioneerd door techniek. Naast domotica ontwikkelen we elektronica en software op maat. Ongeacht het probleem: we denken mee.</p>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="light">
+  <div class="wrap">
+    <div style="text-align:center"><span class="eyebrow reveal">Veelgestelde vragen</span><h2 class="reveal" style="margin-top:14px">Goed om te weten</h2></div>
+    <div class="faq">
+      <details><summary>Moet ik mijn huis verbouwen of nieuwe bedrading laten trekken?</summary><p>Meestal niet. We werken veel met draadloze sensoren en modules achter bestaande schakelaars. Bestaande apparaten koppelen we waar mogelijk gewoon mee.</p></details>
+      <details><summary>Wat als het internet uitvalt?</summary><p>Dan werkt alles gewoon door. Het systeem draait lokaal bij u thuis. Alleen bediening op afstand is tijdelijk niet beschikbaar.</p></details>
+      <details><summary>Zit ik vast aan een merk of abonnement?</summary><p>Nee. Home Assistant is open source en werkt met duizenden merken. U bent eigenaar van uw systeem en uw data.</p></details>
+      <details><summary>Is het ingewikkeld in gebruik?</summary><p>Juist niet: het meeste gebeurt automatisch. Voor de rest krijgt u één overzichtelijke app en, als u wilt, een wandpaneel. Gewone schakelaars blijven ook gewoon werken, dus ook oma kan het licht aandoen.</p></details>
+      <details><summary>Wat kost het?</summary><p>Dat hangt af van uw wensen. Na de gratis huisscan krijgt u een voorstel op maat. Klein beginnen en later uitbreiden kan altijd.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="contact">
+  <div class="wrap">
+    <div class="cta-box reveal">
+      <div>
+        <span class="eyebrow">Gratis huisscan</span>
+        <h2 style="margin:14px 0 16px">Benieuwd wat úw huis kan?</h2>
+        <p class="lead">Laat uw gegevens achter. We bellen u voor een vrijblijvende kennismaking en komen graag langs om samen te kijken wat er mogelijk is.</p>
+        <p style="margin-top:28px;color:var(--muted);font-size:15px">Of mail direct naar<br><a href="mailto:info@antrum-technologies.nl" style="color:#fff;font-weight:700;font-size:18px">info@antrum-technologies.nl</a></p>
+      </div>
+      <!-- Verzendt naar dezelfde Mailchimp-lijst als het oude contactformulier. Het vrije tekstveld komt binnen als WENS
+     zodra dat veld (tag WENS) in de Mailchimp-audience bestaat; anders negeert Mailchimp het. -->
+      <form id="form" action="https://patb.us18.list-manage.com/subscribe/post?u=54a48e265ebb59e5638bfadf6&amp;id=013ac56a13&amp;f_id=00c721e7f0" method="post" target="_blank">
+        <div class="row"><input name="FNAME" placeholder="Naam *" required autocomplete="name"><input name="PHONE" type="tel" placeholder="Telefoonnummer *" required autocomplete="tel"></div>
+        <input name="EMAIL" type="email" placeholder="E-mailadres *" required autocomplete="email">
+        <div class="interest">
+          <label><input type="checkbox" name="group[222492][2]" value="2" checked><span>Huisautomatisering</span></label>
+          <label><input type="checkbox" name="group[222492][8]" value="8"><span>Energie</span></label>
+          <label><input type="checkbox" name="group[222492][1]" value="1"><span>Alarm</span></label>
+          <label><input type="checkbox" name="group[222492][4]" value="4"><span>Camera's</span></label>
+          <label><input type="checkbox" name="group[222492][16]" value="16"><span>Iets anders / maatwerk</span></label>
+          <label><input type="checkbox" name="group[222492][32]" value="32"><span>Bel mij terug</span></label>
+        </div>
+        <textarea name="WENS" id="wens" rows="4" placeholder="Wat zou u graag automatiseren? (optioneel)"></textarea>
+        <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_54a48e265ebb59e5638bfadf6_013ac56a13" tabindex="-1" value=""></div>
+        <button class="btn btn-primary" type="submit" style="justify-content:center">Plan mijn gratis huisscan</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div><a class="logo" href="#top"><img src="/images/logo/antrum-logo-white.svg?v=2" alt="Antrum Technologies"></a><p style="margin-top:14px">Alles-in-1 domotica op maat</p></div>
+    <div>KvK 89275233 · BTW NL864931621B01<br><a href="/blog/">Blog</a> · <a href="/privacy-policy/">Privacy policy</a> · <a href="/terms-and-conditions/">Voorwaarden</a><br>© Antrum Technologies</div>
+  </div>
+</footer>
+
+<script>
+/* ---------- nav + reveal ---------- */
+const nav=document.getElementById('nav');
+addEventListener('scroll',()=>nav.classList.toggle('scrolled',scrollY>20),{passive:true});
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+/* ---------- hero live feed ---------- */
+const feedItems=[
+  ['🧺','Wasmachine is klaar','Melding op telefoon én tv: tijd om op te hangen.'],
+  ['☀️','Zonne-overschot','Boiler en vaatwasser automatisch gestart.'],
+  ['🚪','Achterdeur staat open','Iedereen is weg. Wilt u het alarm toch inschakelen?'],
+  ['🔌','Auto laadt in goedkoopste uur','Klaar om 07:00 met 80% accu.'],
+  ['📦','Pakket bezorgd','Camerabeeld van de voordeur meegestuurd.'],
+  ['🌧️','Regen verwacht','Sproeier overgeslagen, zonnescherm ingetrokken.'],
+  ['🌡️','Niemand thuis','Verwarming naar 17° tot iemand onderweg naar huis is.'],
+  ['🧊','Vriezer te warm','−12° gemeten. Deur goed dicht?'],
+  ['🐶','Max is alleen thuis','Radio aan, temperatuur constant op 20°.'],
+  ['💡','Zonsondergang','Sfeerverlichting woonkamer op 40%.'],
+  ['🫁','CO₂ slaapkamer hoog','Ventilatie tijdelijk op stand 3.'],
+  ['🛡️','Welterusten','Alle ramen dicht, alarm in nachtstand.'],
+];
+const evBox=document.getElementById('events');let fi=0;
+function pushEvent(){
+  const [ic,b,t]=feedItems[fi++%feedItems.length];
+  const d=new Date(),tm=d.toTimeString().slice(0,5);
+  const el=document.createElement('div');el.className='ev';
+  el.innerHTML=`<div class="ic">${ic}</div><p><b>${b}</b>${t}</p><time>${tm}</time>`;
+  evBox.prepend(el);while(evBox.children.length>5)evBox.lastChild.remove();
+  document.getElementById('t-solar').textContent=(2+Math.random()*3).toFixed(1).replace('.',',')+' kW';
+  document.getElementById('t-price').textContent='€0,'+String(Math.floor(5+Math.random()*18)).padStart(2,'0');
+  document.getElementById('t-temp').textContent=(20+Math.random()*1.5).toFixed(1).replace('.',',')+'°';
+}
+for(let i=0;i<4;i++)pushEvent();setInterval(pushEvent,3200);
+
+/* ---------- day timeline ---------- */
+const OFF='off';
+const day=[
+ {t:'06:45',h:6.75,title:'Goedemorgen, zonder schrik',text:'Geen schelle wekker, maar een kunstmatige zonsopkomst. Het licht in de slaapkamer gaat in 15 minuten langzaam aan en de badkamer is al lekker warm.',
+  list:['Slaapkamerlicht dimt op van 1% naar 80%','Verwarming badkamer op 21° vóór u opstaat','Alarm schakelt automatisch uit'],
+  how:'Gekoppeld aan de wekker op uw telefoon. Uitslapen in het weekend? Dan wacht het huis gewoon.',
+  s:{bed:1,blinds:{bed:1,kid:1,living:1,kitchen:1},alarm:0,temp:20}},
+ {t:'07:20',h:7.33,title:'Ontbijt met een seintje',text:'De rolluiken gaan open, de koffie staat klaar en de slimme speaker vertelt wat u moet weten voor vandaag.',
+  list:['Rolluiken omhoog bij zonsopkomst','Koffiezetapparaat aan via slimme stekker','"Om 8 uur gaat het regenen. Neem een paraplu mee."'],
+  how:'Weersverwachting, agenda en de afvalkalender komen samen in één ochtendbericht.',
+  s:{kitchen:1,living:1,blinds:{bed:1},alarm:0,temp:20.5}},
+ {t:'08:30',h:8.5,title:'Iedereen de deur uit',text:'Zodra de laatste persoon vertrekt, gaat het huis in de afwezigheidsstand. U hoeft niets te onthouden.',
+  list:['Alle lampen uit, verwarming naar 17°','Alarm wordt scherp gezet','Robotstofzuiger begint aan zijn ronde'],
+  how:'Aanwezigheid via de telefoons van het gezin. Staat er nog een raam open? Dan krijgt u een melding.',
+  s:{alarm:1,robot:1,temp:17}},
+ {t:'11:30',h:11.5,title:'Gratis stroom van het dak',text:'De zon schijnt volop. In plaats van stroom terug te leveren voor een paar cent, gebruikt het huis die zelf.',
+  list:['Boiler en vaatwasser starten bij overschot','De auto laadt op eigen zonnestroom','Zonnescherm zakt als het binnen te warm wordt'],
+  how:'Het systeem kijkt continu naar uw slimme meter en omvormer en verdeelt de energie slim.',
+  s:{alarm:1,solar:1,ev:1,temp:17,blinds:{living:.5}}},
+ {t:'13:40',h:13.67,title:'Ding-dong, terwijl u op kantoor zit',text:'De pakketbezorger belt aan. U ziet direct wie er voor de deur staat en kunt de bezorger aanspreken.',
+  list:['Camerabeeld als melding op uw telefoon','Terugpraten via de deurbel','Tuin-beweging terwijl niemand thuis is? Lamp aan en een seintje'],
+  how:'Camera\'s met lokale persoonsherkenning: geen meldingen meer van overvliegende vogels.',
+  s:{alarm:1,solar:1,ev:1,temp:17,door:1}},
+ {t:'15:45',h:15.75,title:'De kinderen zijn thuis',text:'Het alarm schakelt uit zodra hun telefoon of tag in de buurt is. U krijgt rustig een berichtje.',
+  list:['"Sam is thuis" op uw telefoon','Licht en verwarming in de kinderkamer aan','Wasmachine klaar? Melding op de tv'],
+  how:'Huishoudelijke apparaten worden slim door hun stroomverbruik te meten, ook als ze ouder zijn.',
+  s:{kid:1,temp:20,solar:1}},
+ {t:'18:20',h:18.33,title:'Thuiskomen in een warm huis',text:'Uw auto nadert de wijk: de verwarming staat al aan, de oprit is verlicht en de sfeerverlichting gaat aan bij zonsondergang.',
+  list:['Verwarming aan als u 10 minuten van huis bent','Sfeerverlichting op basis van de zonsondergang','Tuin wordt alleen gesproeid als het niet geregend heeft'],
+  how:'Geen vaste tijden, maar slimme triggers: locatie, licht buiten, weer.',
+  s:{living:1,kitchen:1,garden:1,sprinkler:1,temp:20.5}},
+ {t:'21:00',h:21,title:'Filmavond met één knop',text:'Eén tik op de wandschakelaar en het hele huis gaat in bioscoopstand.',
+  list:['Lampen dimmen naar warm 10%','Rolluiken dicht, tv en soundbar aan','Pauze? Dan gaat het licht zachtjes aan'],
+  how:'Scènes die meerdere apparaten van verschillende merken tegelijk aansturen.',
+  s:{living:.35,tv:1,blinds:{living:1,kitchen:1},garden:1,temp:20.5}},
+ {t:'23:15',h:23.25,title:'Welterusten',text:'Het huis controleert alles voor u. Staat er nog iets open? Dan hoort u het meteen.',
+  list:['"De achterdeur is nog open" via de speaker','Alles uit behalve het nachtlampje','Alarm in nachtstand, beneden scherp'],
+  how:'Deur- en raamsensoren, gekoppeld aan één bedtijdroutine op uw nachtkastje.',
+  s:{bed:.3,alarm:1,blinds:{bed:1,kid:1,living:1,kitchen:1},temp:18}},
+ {t:'01:00',h:25,title:'Laden als het goedkoop is',text:'Met een dynamisch energiecontract is stroom \'s nachts vaak het goedkoopst. Het huis weet precies welk uur.',
+  list:['Auto laadt in de 3 goedkoopste uren','Thuisbatterij vult bij voor de ochtendpiek','Klaar om 07:00, gegarandeerd'],
+  how:'De prijzen voor morgen worden automatisch opgehaald en het laadplan wordt elke dag opnieuw berekend.',
+  s:{alarm:1,ev:1,blinds:{bed:1,kid:1,living:1,kitchen:1},temp:18}},
+ {t:'03:10',h:27.17,title:'Veilig naar het toilet',text:'Beweging op de gang midden in de nacht? Dan gaat een zacht oranje lichtje aan, net genoeg om te zien.',
+  list:['Gangverlichting op 5%, warm licht','Na 2 minuten weer uit','Niemand wordt wakker, het alarm blijft scherp'],
+  how:'Bewegingssensor + tijd van de dag = een ander gedrag dan overdag.',
+  s:{kid:.15,alarm:1,blinds:{bed:1,kid:1,living:1,kitchen:1},temp:18}},
+];
+const $=id=>document.getElementById(id);
+const slider=$('slider');slider.max=day.length-1;
+function skyFor(h){h=h%24;
+  if(h<5||h>=22) return ['#070b2a','#141c52',0,1];
+  if(h<7.5) return ['#2b2f78','#ff9a76',.0,.3];
+  if(h<17.5) return ['#3d8bdc','#a9dcff',1,0];
+  if(h<19.5) return ['#3c3f91','#ff9a6a',.5,.2];
+  return ['#0f1544','#2c2f72',0,.9];
+}
+function render(i){
+  const d=day[i],s=d.s;$('clock').textContent=d.t;
+  const [a,b,dayness,night]=skyFor(d.h);
+  $('sky1').setAttribute('stop-color',a);$('sky2').setAttribute('stop-color',b);
+  $('stars').setAttribute('opacity',night);$('moon').style.opacity=night>.5?1:0;
+  const hh=d.h%24, p=Math.min(Math.max((hh-6)/14,0),1);
+  const sx=40+p*560, sy=dayness>0||(hh>6&&hh<20)?(320-Math.sin(p*Math.PI)*260):520;
+  $('sun').style.transform=`translate(${sx}px,${sy}px)`;
+  const offFill=(dayness>.5)?'#8fc2ef':'#232a66';
+  ['bed','kid','living','kitchen'].forEach(r=>{
+    const w=$('w-'+r),v=s[r]||0;
+    w.setAttribute('fill',v?`rgba(255,${190+Math.round(30*v)},${80+Math.round(60*(1-v))},${.35+.65*v})`:offFill);
+    w.classList.toggle('glow',v>.2);
+    const bl=(s.blinds&&s.blinds[r])||0;$('b-'+r).setAttribute('height',r==='living'||r==='kitchen'?62*bl:60*bl);
+  });
+  $('gardenLight').setAttribute('fill',s.garden?'#ffd27a':'#2a3168');$('gardenLight').classList.toggle('glow',!!s.garden);
+  $('tv').setAttribute('fill',s.tv?'#7fb0ff':'#0a0f30');
+  $('panels').setAttribute('fill',s.solar?'#2f6fe0':'#1d3a7c');
+  $('evLed').setAttribute('fill',s.ev?'#3ddc97':'#555c8a');$('evCable').setAttribute('stroke',s.ev?'#3ddc97':'#555c8a');
+  $('doorLed').setAttribute('fill',s.door?'#ffc24b':(s.alarm?'#ff6b6b':'#3ddc97'));
+  $('sprinkler').setAttribute('opacity',s.sprinkler?1:0);
+  $('robot').style.transform=s.robot?'translateX(150px)':'translateX(0)';
+  $('c-alarm').classList.toggle('off',!s.alarm);$('c-solar').classList.toggle('off',!s.solar);$('c-ev').classList.toggle('off',!s.ev);
+  $('c-temp').textContent='🌡️ '+String(s.temp).replace('.',',')+'°';
+  $('story').innerHTML=`<div class="t">${d.t}</div><h3>${d.title}</h3><p>${d.text}</p><ul>${d.list.map(x=>`<li>${x}</li>`).join('')}</ul><div class="how"><b>Zo werkt het:</b> ${d.how}</div><div class="dots">${day.map((_,j)=>`<button class="${j===i?'on':''}" data-j="${j}" aria-label="Ga naar ${day[j].t}"></button>`).join('')}</div>`;
+  slider.value=i;
+}
+$('story').addEventListener('click',e=>{if(e.target.dataset.j){stop();render(+e.target.dataset.j)}});
+slider.addEventListener('input',()=>{stop();render(+slider.value)});
+let timer=null;
+const playIcon='<path d="M7 4v16l13-8z"/>',pauseIcon='<path d="M6 4h4v16H6zM14 4h4v16h-4z"/>';
+function stop(){clearInterval(timer);timer=null;$('pi').innerHTML=playIcon}
+function start(){$('pi').innerHTML=pauseIcon;timer=setInterval(()=>render((+slider.value+1)%day.length),4200)}
+$('play').onclick=()=>timer?stop():(render((+slider.value+1)%day.length),start());
+render(0);
+// autoplay once visible
+new IntersectionObserver((es,o)=>{if(es[0].isIntersecting&&!timer){start();o.disconnect()}},{threshold:.5}).observe($('house'));
+
+/* ---------- personas ---------- */
+const personas=[
+ {id:'gezin',ic:'👨‍👩‍👧',name:'Druk gezin',title:'Minder regelen, meer rust',text:'Tussen werk, school en sport wilt u niet ook nog aan het huis denken. Het huis houdt het overzicht voor u.',stats:[['30 min','per dag minder gedoe'],['0','vergeten lampen']],
+  cards:[['🗑️','"Morgen gaat de groene bak"','De avond ervoor een melding, en op de dag zelf een lampje bij de achterdeur.',['Afvalkalender','Om 19:00','Melding + lamp']],
+   ['🧺','Wasmachine klaar','Herkend aan het stroomverbruik. Niemand blijft meer met natte was zitten.',['Verbruik < 5 W','Iemand thuis','Melding op tv']],
+   ['🎒','Kinderen veilig thuis','Bericht wanneer ze thuiskomen, ook als u zelf nog onderweg bent.',['Kind komt thuis','Werkdag','Pushbericht']],
+   ['🌙','Bedtijdritueel','Kinderkamer dimt langzaam naar een nachtlampje en de speaker zet het slaapliedje op.',['19:30','Schooldag','Licht + muziek']]]},
+ {id:'energie',ic:'⚡',name:'Energiebewust',title:'Elke kilowattuur slim benut',text:'Zonnepanelen, een laadpaal of een dynamisch contract? Dan valt er veel te winnen als alles op elkaar is afgestemd.',stats:[['tot 30%','lagere energierekening*'],['24/7','inzicht per apparaat']],
+  cards:[['🔌','Auto laden op het goedkoopste moment','Met dynamische tarieven of op eigen zonnestroom. U stelt alleen in hoe laat hij klaar moet zijn.',['Prijs laag','Klaar om 7:00','Laadpaal aan']],
+   ['☀️','Zonne-overschot gebruiken','Boiler, vaatwasser of warmtepomp springen bij als u teruglevert.',['Teruglevering > 1,5 kW','Overdag','Apparaten aan']],
+   ['👻','Sluipverbruik ontmaskerd','Zie welk apparaat \'s nachts stilletjes stroom verbruikt en schakel het automatisch uit.',['Iedereen slaapt','Na 23:00','Stekkers uit']],
+   ['🌡️','Alleen verwarmen waar u bent','Per kamer slimme thermostaatknoppen, en de verwarming gaat lager als er een raam open staat.',['Raam open','Verwarming aan','Kraan dicht']]]},
+ {id:'veilig',ic:'🛡️',name:'Veilig & op vakantie',title:'Met een gerust hart weg',text:'Een alarm dat niet alleen afgaat, maar meedenkt. En een huis dat bewoond lijkt, ook als u op het strand ligt.',stats:[['100%','beelden lokaal opgeslagen'],['< 2 sec','melding met beeld']],
+  cards:[['🎭','Aanwezigheidssimulatie','Lampen en rolluiken volgen uw echte patroon van de afgelopen weken. Voor een inbreker is het huis bewoond.',['Vakantiemodus','Na zonsondergang','Licht + rolluiken']],
+   ['📹','Slimme camera\'s','Persoonsherkenning lokaal: alleen een melding bij mensen, niet bij katten of bewegende takken.',['Persoon in tuin','Niemand thuis','Beeld + lamp']],
+   ['💧','Waterlek-alarm','Sensor onder de wasmachine of cv-ketel. Lek? Dan gaat de hoofdkraan automatisch dicht.',['Water gedetecteerd','Altijd','Kraan dicht + melding']],
+   ['🔥','Rookmelder koppelen','Bij rook gaan alle lampen aan, rolluiken omhoog en krijgt u én de buren een bericht.',['Rook','Altijd','Licht + bericht']]]},
+ {id:'zorg',ic:'🧓',name:'Zorg op afstand',title:'Langer zelfstandig thuis',text:'Voor (groot)ouders die zelfstandig wonen: onopvallende zekerheid, zonder camera\'s in huis.',stats:[['0','camera\'s nodig'],['1','rustig gevoel']],
+  cards:[['☕','"Heeft mam al koffie gehad?"','Geen beweging of waterkoker gebruikt vóór 10 uur? Dan krijgt de familie een berichtje.',['Geen activiteit','Vóór 10:00','Bericht familie']],
+   ['🚶','Nachtelijke verlichting','Bij uit bed stappen gaat er een zacht pad van licht aan naar het toilet. Valrisico omlaag.',['Bedsensor','\'s Nachts','Pad van licht']],
+   ['🚪','Voordeur \'s nachts open','Staat de voordeur na middernacht open? Een vriendelijke gesproken herinnering en een seintje.',['Deur open','Na 00:00','Spraak + melding']],
+   ['💊','Medicatieherinnering','Een lampje bij het medicijnkastje knippert tot het kastje is geopend.',['08:00','Kastje dicht','Lamp knippert']]]},
+ {id:'thuiswerk',ic:'💻',name:'Thuiswerker',title:'Focus, comfort en een frisse kop',text:'Een kantoor aan huis dat zich aanpast aan uw werkdag: geen afleiding, wel een gezond binnenklimaat.',stats:[['< 800','ppm CO₂ in werkkamer'],['1','knop voor focusmodus']],
+  cards:[['🔴','In gesprek-lamp','Zit u in Teams of Zoom? Dan brandt er een rood lampje bij de deur. Niemand stormt meer binnen.',['Camera aan','Werktijd','Lamp rood']],
+   ['🫁','Frisse lucht','CO₂ in de werkkamer te hoog? Ventilatie omhoog of een seintje om een raam open te zetten.',['CO₂ > 1000','Iemand aanwezig','Ventilatie']],
+   ['🔕','Focusmodus','Deurbel geluidloos, alleen een melding op scherm, en de wasmachine wacht met centrifugeren.',['Focusknop','09:00–12:00','Stilte']],
+   ['🌤️','Geen schittering','Zonwering zakt automatisch als de zon op uw scherm valt.',['Zon op gevel','Lux > 30.000','Screen omlaag']]]},
+ {id:'dier',ic:'🐾',name:'Huisdiereigenaar',title:'Ook als u er niet bent',text:'Uw hond of kat alleen thuis? Het huis zorgt voor een prettige temperatuur en houdt u op de hoogte.',stats:[['20°','constant, ook in de zomer'],['24/7','meekijken']],
+  cards:[['🐕','Gezelschapsmodus','Radio aan op een rustige zender en temperatuur constant zolang de hond alleen is.',['Niemand thuis','Hond thuis','Radio + klimaat']],
+   ['🐈','Kattenluik met meldingen','Zie wanneer Minoes in- of uitgaat, en \'s nachts gaat het luik alleen nog naar binnen open.',['Luik','Na 22:00','Alleen naar binnen']],
+   ['🥣','Voerbak leeg?','Slimme voerbak geeft een seintje bij een lage voorraad of als er een maaltijd is overgeslagen.',['Gewicht laag','Altijd','Melding']],
+   ['🌡️','Hitte-alarm','Wordt het binnen te warm, dan gaan de screens omlaag en krijgt u een seintje.',['Binnen > 26°','Dier alleen','Screens + melding']]]},
+];
+const tabs=$('tabs');
+tabs.innerHTML=personas.map((p,i)=>`<button class="tab${i?'':' on'}" role="tab" data-i="${i}">${p.ic} ${p.name}</button>`).join('');
+function showPersona(i){
+  const p=personas[i];
+  [...tabs.children].forEach((b,j)=>b.classList.toggle('on',i===j));
+  $('p-intro').innerHTML=`<div class="big">${p.ic}</div><h3>${p.title}</h3><p>${p.text}</p><div class="save">${p.stats.map(s=>`<div><b>${s[0]}</b><span>${s[1]}</span></div>`).join('')}</div>${p.id==='energie'?'<p style="font-size:12px;margin-top:14px;opacity:.7">* Indicatie, afhankelijk van uw situatie en contract.</p>':''}`;
+  $('cards').innerHTML=p.cards.map((c,j)=>`<div class="card" style="animation-delay:${j*70}ms"><div class="ic">${c[0]}</div><h4>${c[1]}</h4><p>${c[2]}</p><div class="flow"><span class="w">${c[3][0]}</span><span>${c[3][1]}</span><span class="d">${c[3][2]}</span></div></div>`).join('');
+}
+tabs.addEventListener('click',e=>{const b=e.target.closest('.tab');if(b)showPersona(+b.dataset.i)});
+showPersona(0);
+
+/* ---------- builder ---------- */
+// Elke trigger heeft eigen voorwaarden, en elke voorwaarde eigen acties, zodat elke combinatie logisch is.
+const T=[
+ {w:'de wasmachine klaar is',e:'sensor.wasmachine_vermogen',t:'below: 5   # W, 3 minuten lang',i:'Herkend aan het stroomverbruik via een slimme stekker, ook bij een oude wasmachine.',c:[
+  {c:'en er iemand thuis is',y:'zone.home: above 0',a:[['toon een melding op de tv','notify.tv_woonkamer'],['laat de slimme speaker het aankondigen','tts.speak: speaker_woonkamer']]},
+  {c:'en er niemand thuis is',y:'zone.home: 0',a:[['herinner me eraan zodra ik thuiskom','wait: zone.home > 0 → notify.telefoon'],['stuur een pushbericht naar mijn telefoon','notify.telefoon']]},
+  {c:'en het na 22:00 is',y:'time: after 22:00',a:[['bewaar de melding tot morgenochtend 7:30','wait: 07:30 → notify.telefoon']]}]},
+ {w:'de zon ondergaat',e:'sun.sun',t:'event: sunset',i:'Op basis van uw exacte locatie, dus elke dag op het juiste moment.',c:[
+  {c:'en er iemand thuis is',y:'zone.home: above 0',a:[['zet de sfeerverlichting in de woonkamer op 40%','light.woonkamer: brightness 40%'],['doe de rolluiken aan de straatkant dicht','cover.rolluiken_straatkant: close'],['doe de tuinverlichting aan','light.tuin: on']]},
+  {c:'en de vakantiestand aan staat',y:'input_boolean.vakantie: on',a:[['simuleer aanwezigheid met lampen en rolluiken','script.aanwezigheid_simuleren'],['doe de gevel- en tuinverlichting aan','light.buiten: on']]}]},
+ {w:'de stroomprijs onder € 0,10 per kWh zakt',e:'sensor.stroomprijs',t:'below: 0.10',i:'Met de actuele uurprijzen van uw dynamische energiecontract.',c:[
+  {c:'en de auto aan de laadpaal hangt',y:'binary_sensor.auto_aangesloten: on',a:[['start met laden tot 80%','switch.laadpaal: on (tot 80%)'],['laad op het hoogste vermogen','number.laadstroom: 16 A']]},
+  {c:'en de thuisbatterij niet vol is',y:'sensor.batterij_lading: below 95',a:[['laad de thuisbatterij bij','select.batterij_modus: laden']]},
+  {c:'en de boiler onder de 50° is',y:'sensor.boiler_temp: below 50',a:[['warm de boiler op','switch.boiler: on']]}]},
+ {w:'de stroomprijs negatief wordt',e:'sensor.stroomprijs',t:'below: 0',i:'Bij negatieve prijzen kost terugleveren u geld. Het systeem grijpt automatisch in.',c:[
+  {c:'en de zonnepanelen terugleveren',y:'sensor.teruglevering: above 0',a:[['schakel de omvormer tijdelijk uit','switch.omvormer: off'],['zet de boiler en vaatwasser aan','switch.boiler + switch.vaatwasser: on']]}]},
+ {w:'er een persoon in de tuin wordt gezien',e:'binary_sensor.tuin_persoon',t:'to: "on"',i:'Camera met lokale persoonsherkenning: geen meldingen bij katten of bewegende takken.',c:[
+  {c:'en er niemand thuis is',y:'zone.home: 0',a:[['stuur een melding met camerabeeld','notify.telefoon: camera.tuin'],['doe de tuinverlichting aan en stuur camerabeeld','light.tuin: on + notify.telefoon']]},
+  {c:'en het alarm in nachtstand staat',y:'alarm_control_panel.huis: armed_night',a:[['laat de buitensirene kort afgaan','siren.buiten: 5 seconden'],['zet alle buitenlampen fel aan','light.buiten: brightness 100%']]},
+  {c:'en het donker is',y:'sun.sun: below_horizon',a:[['doe de tuinverlichting 5 minuten aan','light.tuin: on → 5 min → off']]}]},
+ {w:'de laatste persoon het huis verlaat',e:'zone.home',t:'to: 0',i:'Via de telefoons van het gezin. Niemand hoeft er meer aan te denken.',c:[
+  {c:'ongeacht het tijdstip',y:'# geen voorwaarde',a:[['zet alle lampen en de tv uit','light.alle + media_player.tv: off'],['schakel het alarm in','alarm_control_panel.huis: arm_away']]},
+  {c:'en het een werkdag is',y:'binary_sensor.werkdag: on',a:[['start de robotstofzuiger','vacuum.robot: start'],['zet de verwarming op 17°','climate.huis: 17°']]},
+  {c:'en er nog een raam openstaat',y:'binary_sensor.ramen: on',a:[['stuur een melding welk raam nog openstaat','notify.telefoon: {{ open_ramen }}']]}]},
+ {w:'mijn auto binnen 5 km van huis is',e:'proximity.thuis',t:'below: 5   # km, richting huis',i:'Via de locatie van uw telefoon of de app van uw auto.',c:[
+  {c:'en het binnen kouder is dan 19°',y:'sensor.woonkamer_temp: below 19',a:[['zet de verwarming alvast op 20°','climate.woonkamer: 20°']]},
+  {c:'en het donker is',y:'sun.sun: below_horizon',a:[['doe de opritverlichting aan','light.oprit: on'],['doe de hal- en opritverlichting aan','light.hal + light.oprit: on']]},
+  {c:'en het alarm aanstaat',y:'alarm_control_panel.huis: armed_away',a:[['zet het alarm uit zodra ik de oprit oprijd','wait: zone.oprit → alarm: disarm']]}]},
+ {w:'de deurbel gaat',e:'binary_sensor.deurbel',t:'to: "on"',i:'Met een slimme videodeurbel, gewoon bediend vanuit uw telefoon of tv.',c:[
+  {c:'en er iemand thuis is',y:'zone.home: above 0',a:[['toon het camerabeeld op de tv','notify.tv: camera.voordeur'],['pauzeer de muziek in huis','media_player.alle: pause']]},
+  {c:'en er niemand thuis is',y:'zone.home: 0',a:[['stuur camerabeeld naar mijn telefoon om terug te praten','notify.telefoon: camera.voordeur']]},
+  {c:'en de kinderen al slapen',y:'input_boolean.kinderen_slapen: on',a:[['laat de bel stil, alleen een melding op de telefoon','switch.gong: off + notify.telefoon']]}]},
+ {w:'de CO₂ in de slaapkamer boven 1000 ppm komt',e:'sensor.slaapkamer_co2',t:'above: 1000',i:'Een kleine luchtkwaliteitssensor laat zien wanneer het tijd is voor frisse lucht.',c:[
+  {c:'en er iemand in de slaapkamer is',y:'binary_sensor.slaapkamer_bezet: on',a:[['zet de ventilatie op stand 3','fan.wtw: stand_3']]},
+  {c:'en het buiten droog is',y:'weather.thuis: not rainy',a:[['zet het dakraam op een kier','cover.dakraam: 10%']]},
+  {c:'en het overdag is',y:'time: 08:00–22:00',a:[['stuur een melding om even te luchten','notify.telefoon']]}]},
+ {w:'het begint te regenen',e:'sensor.regensensor',t:'to: "regen"',i:'Een regensensor op het dak of de lokale weerdata van uw locatie.',c:[
+  {c:'en het zonnescherm uit staat',y:'cover.zonnescherm: open',a:[['rol het zonnescherm in','cover.zonnescherm: close']]},
+  {c:'en er een dakraam openstaat',y:'binary_sensor.dakraam: on',a:[['sluit het dakraam automatisch','cover.dakraam: close'],['stuur een melding welk raam openstaat','notify.telefoon']]},
+  {c:'en de beregening vandaag gepland staat',y:'schedule.beregening: on',a:[['sla de beregening van vandaag over','input_boolean.beregening_overslaan: on']]}]},
+ {w:'er water onder de cv-ketel ligt',e:'binary_sensor.lek_cv',t:'to: "on"',i:'Met een lekkagesensor van een paar tientjes. Kan veel waterschade voorkomen.',c:[
+  {c:'ongeacht of er iemand thuis is',y:'# geen voorwaarde',a:[['draai de hoofdkraan dicht en stuur een melding','valve.hoofdkraan: close + notify.iedereen'],['laat alle speakers alarm slaan','tts.speak: alle_speakers']]},
+  {c:'en er niemand thuis is',y:'zone.home: 0',a:[['draai de hoofdkraan dicht en waarschuw de buren','valve.hoofdkraan: close + notify.buren']]}]},
+ {w:'de vriezer warmer dan −15° wordt',e:'sensor.vriezer_temp',t:'above: -15',i:'Met een draadloze temperatuursensor in de vriezer.',c:[
+  {c:'en de vriezerdeur openstaat',y:'binary_sensor.vriezerdeur: on',a:[['laat de speaker zeggen dat de deur openstaat','tts.speak: speaker_keuken'],['laat de keukenlamp rood knipperen','light.keuken: flash rood']]},
+  {c:'en dat al 15 minuten zo is',y:'for: 00:15:00',a:[['stuur iedereen een melding','notify.iedereen']]}]},
+ {w:'mijn wekker afgaat',e:'sensor.telefoon_volgende_wekker',t:'time: wekkertijd',i:'Gekoppeld aan de wekker op uw telefoon. Uitslapen? Dan wacht het huis.',c:[
+  {c:'en het een werkdag is',y:'binary_sensor.werkdag: on',a:[['laat het licht opkomen als een zonsopkomst','light.slaapkamer: 1% → 80% in 15 min'],['zet de koffiemachine aan','switch.koffiemachine: on']]},
+  {c:'en het buiten vriest',y:'sensor.buiten_temp: below 0',a:[['verwarm de auto alvast voor','climate.auto: on'],['zet de badkamer alvast op 22°','climate.badkamer: 22°']]}]},
+];
+const sW=$('s-when'),sC=$('s-cond'),sD=$('s-do');
+const opts=(sel,arr,f)=>sel.innerHTML=arr.map((x,i)=>`<option value="${i}">${f(x)}</option>`).join('');
+opts(sW,T,x=>x.w);
+const cur=()=>{const w=T[sW.value],c=w.c[sC.value];return [w,c,c.a[sD.value]]};
+function fillCond(){opts(sC,T[sW.value].c,x=>x.c);fillAct()}
+function fillAct(){opts(sD,T[sW.value].c[sC.value].a,x=>x[0])}
+const meas=document.createElement('span');meas.style.cssText='position:absolute;visibility:hidden;white-space:nowrap;font-weight:800;padding:0 6px';document.querySelector('.sentence').appendChild(meas);
+function fit(){[sW,sC,sD].forEach(s=>{meas.textContent=s.options[s.selectedIndex].text;s.style.width=Math.min(meas.offsetWidth+4,document.querySelector('.sentence').clientWidth)+'px'})}
+const verdicts=['Ja, dat kan.','Kan prima.','Zeker, en eenvoudig.','Ja, dat bouwen we.','Geen probleem.'];
+function upd(){
+  const [w,c,d]=cur();
+  $('v-title').textContent=verdicts[Math.floor(Math.random()*verdicts.length)];
+  $('v-text').textContent=w.i;
+  $('yaml').innerHTML=
+`<span class="k">alias:</span> <span class="v">"Als ${w.w} → ${d[0]}"</span>
+<span class="k">triggers:</span>
+  - <span class="k">entity:</span> <span class="v">${w.e}</span>
+    <span class="v">${w.t}</span>
+<span class="k">conditions:</span>
+  - <span class="v">${c.y}</span>
+<span class="k">actions:</span>
+  - <span class="k">action:</span> <span class="v">${d[1]}</span>
+<span class="cm"># Vereenvoudigd voorbeeld. Wij schrijven, testen en onderhouden dit voor u.</span>`;
+  fit();
+}
+sW.addEventListener('change',()=>{fillCond();upd()});
+sC.addEventListener('change',()=>{fillAct();upd()});
+sD.addEventListener('change',upd);
+addEventListener('resize',fit);document.fonts&&document.fonts.ready.then(fit);
+const rnd=n=>Math.floor(Math.random()*n);
+$('shuffle').onclick=()=>{
+  let w;do{w=rnd(T.length)}while(T.length>1&&w==sW.value);
+  sW.value=w;fillCond();sC.value=rnd(T[w].c.length);fillAct();sD.value=rnd(T[w].c[sC.value].a.length);upd();
+};
+$('ty').onclick=()=>{const y=$('yaml');y.hidden=!y.hidden;$('ty').textContent=y.hidden?'Bekijk hoe dit er onder de motorkap uitziet':'Verberg de code'};
+fillCond();upd();
+$('want').addEventListener('click',()=>{const [w,c,d]=cur();$('wens').value=`Als ${w.w} ${c.c}, dan ${d[0]}.`});
+</script>
+</body>
+</html>
