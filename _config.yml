@@ -19,28 +19,12 @@ collections:
   home-automation-intro:
     output: true
     sort_by: weight
-  services:
-    output: true
-    sort_by: weight
-  blog:
-    output: true
-    sort_by: date
   team:
     output: false
   home-automation:
     output: true
 
 defaults:
-  - scope:
-      path: ""
-      type: "services"
-    values:
-      layout: "single"
-  - scope:
-      path: ""
-      type: "blog"
-    values:
-      layout: "single"
   - scope:
       path: ""
       type: "team"
