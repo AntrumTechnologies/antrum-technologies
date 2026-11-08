@@ -267,6 +267,10 @@ input::placeholder,textarea::placeholder{color:#7e84b3}
 .interest input{display:none}
 .interest span{display:inline-block;padding:8px 14px;border-radius:999px;border:1px solid var(--line);font-size:14px;font-weight:600;color:var(--muted);transition:all .2s}
 .interest input:checked+span{background:var(--amber);color:#2a1d00;border-color:var(--amber)}
+.form-status{font-size:15px;padding:14px 16px;border-radius:14px;background:rgba(61,220,151,.12);border:1px solid rgba(61,220,151,.35);color:#c9f5e0}
+.form-status.err{background:rgba(255,107,107,.12);border-color:rgba(255,107,107,.4);color:#ffd2d2}
+.form-status a{color:#fff;font-weight:700}
+form button[disabled]{opacity:.6;cursor:wait}
 
 footer{padding:50px 0 40px;border-top:1px solid var(--line);color:var(--muted);font-size:14px}
 footer .wrap{display:flex;justify-content:space-between;gap:30px;flex-wrap:wrap}
@@ -588,22 +592,26 @@ footer a:hover{color:#fff}
         <p class="lead">Laat uw gegevens achter. We bellen u voor een vrijblijvende kennismaking en komen graag langs om samen te kijken wat er mogelijk is.</p>
         <p style="margin-top:28px;color:var(--muted);font-size:15px">Of mail direct naar<br><a href="mailto:info@antrum-technologies.nl" style="color:#fff;font-weight:700;font-size:18px">info@antrum-technologies.nl</a></p>
       </div>
-      <!-- Verzendt naar dezelfde Mailchimp-lijst als het oude contactformulier. Het vrije tekstveld komt binnen als WENS
-     zodra dat veld (tag WENS) in de Mailchimp-audience bestaat; anders negeert Mailchimp het. -->
-      <form id="form" action="https://patb.us18.list-manage.com/subscribe/post?u=54a48e265ebb59e5638bfadf6&amp;id=013ac56a13&amp;f_id=00c721e7f0" method="post" target="_blank">
-        <div class="row"><input name="FNAME" placeholder="Naam *" required autocomplete="name"><input name="PHONE" type="tel" placeholder="Telefoonnummer *" required autocomplete="tel"></div>
-        <input name="EMAIL" type="email" placeholder="E-mailadres *" required autocomplete="email">
+      <!-- Verzendt via Web3Forms (web3forms.com) als e-mail naar het adres dat bij de sleutel hoort.
+           De sleutel is bedoeld om publiek in de HTML te staan. -->
+      <form id="form" action="https://api.web3forms.com/submit" method="post">
+        <input type="hidden" name="access_key" value="60c00a8b-75f8-42ee-8516-bec26efb22a1">
+        <input type="hidden" name="subject" value="Nieuwe aanvraag huisscan via antrum-technologies.nl">
+        <input type="hidden" name="from_name" value="Website Antrum Technologies">
+        <input type="checkbox" name="botcheck" style="display:none" tabindex="-1" autocomplete="off">
+        <div class="row"><input name="name" placeholder="Naam *" required autocomplete="name"><input name="phone" type="tel" placeholder="Telefoonnummer *" required autocomplete="tel"></div>
+        <input name="email" type="email" placeholder="E-mailadres *" required autocomplete="email">
         <div class="interest">
-          <label><input type="checkbox" name="group[222492][2]" value="2" checked><span>Huisautomatisering</span></label>
-          <label><input type="checkbox" name="group[222492][8]" value="8"><span>Energie</span></label>
-          <label><input type="checkbox" name="group[222492][1]" value="1"><span>Alarm</span></label>
-          <label><input type="checkbox" name="group[222492][4]" value="4"><span>Camera's</span></label>
-          <label><input type="checkbox" name="group[222492][16]" value="16"><span>Iets anders / maatwerk</span></label>
-          <label><input type="checkbox" name="group[222492][32]" value="32"><span>Bel mij terug</span></label>
+          <label><input type="checkbox" name="interesse" value="Huisautomatisering" checked><span>Huisautomatisering</span></label>
+          <label><input type="checkbox" name="interesse" value="Energie"><span>Energie</span></label>
+          <label><input type="checkbox" name="interesse" value="Alarm"><span>Alarm</span></label>
+          <label><input type="checkbox" name="interesse" value="Camera's"><span>Camera's</span></label>
+          <label><input type="checkbox" name="interesse" value="Iets anders / maatwerk"><span>Iets anders / maatwerk</span></label>
+          <label><input type="checkbox" name="interesse" value="Bel mij terug"><span>Bel mij terug</span></label>
         </div>
-        <textarea name="WENS" id="wens" rows="4" placeholder="Wat zou u graag automatiseren? (optioneel)"></textarea>
-        <div aria-hidden="true" style="position:absolute;left:-5000px"><input type="text" name="b_54a48e265ebb59e5638bfadf6_013ac56a13" tabindex="-1" value=""></div>
+        <textarea name="wens" id="wens" rows="4" placeholder="Wat zou u graag automatiseren? (optioneel)"></textarea>
         <button class="btn btn-primary" type="submit" style="justify-content:center">Plan mijn gratis huisscan</button>
+        <p class="form-status" id="formStatus" role="status" aria-live="polite" hidden></p>
       </form>
     </div>
   </div>
@@ -877,6 +885,27 @@ $('shuffle').onclick=()=>{
 $('ty').onclick=()=>{const y=$('yaml');y.hidden=!y.hidden;$('ty').textContent=y.hidden?'Bekijk hoe dit er onder de motorkap uitziet':'Verberg de code'};
 fillCond();upd();
 $('want').addEventListener('click',()=>{const [w,c,d]=cur();$('wens').value=`Als ${w.w} ${c.c}, dan ${d[0]}.`});
+
+/* ---------- contactformulier (Web3Forms) ---------- */
+$('form').addEventListener('submit',async e=>{
+  e.preventDefault();
+  const f=e.target, st=$('formStatus'), btn=f.querySelector('button[type=submit]');
+  const data=Object.fromEntries(new FormData(f));
+  data.interesse=[...f.querySelectorAll('input[name=interesse]:checked')].map(i=>i.value).join(', ')||'-';
+  delete data.botcheck; if(f.botcheck.checked) data.botcheck=true;
+  btn.disabled=true; btn.textContent='Versturen…'; st.hidden=true; st.className='form-status';
+  try{
+    const r=await fetch(f.action,{method:'POST',headers:{'Content-Type':'application/json',Accept:'application/json'},body:JSON.stringify(data)});
+    const j=await r.json();
+    if(!r.ok||!j.success) throw new Error(j.message||r.status);
+    f.reset(); st.textContent='Bedankt! Uw aanvraag is verstuurd. We nemen binnen twee werkdagen contact met u op.';
+  }catch(err){
+    st.classList.add('err');
+    st.innerHTML='Versturen is niet gelukt. Probeer het later nog eens of mail ons op <a href="mailto:info@antrum-technologies.nl">info@antrum-technologies.nl</a>.';
+  }finally{
+    st.hidden=false; btn.disabled=false; btn.textContent='Plan mijn gratis huisscan';
+  }
+});
 </script>
 </body>
 </html>
